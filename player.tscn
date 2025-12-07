@@ -1,0 +1,364 @@
+[gd_scene load_steps=12 format=3 uid="uid://bbr55tpw6565w"]
+
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://dvauem87bwysp" path="res://player.gd" id="2_onrkg"]
+[ext_resource type="PackedScene" uid="uid://bnh3miiygggaj" path="res://weapons/sword.blend" id="3_i3pqv"]
+[ext_resource type="Script" uid="uid://dhtqq780o0e5m" path="res://hurtbox_area_3d.gd" id="4_hqtel"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sweqy"]
+radius = 0.8089838
+
+[sub_resource type="Animation" id="Animation_sweqy"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HeadRemote/WeaponMarker:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2),
+"points": PackedFloat32Array(0.90141445, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HeadRemote/WeaponMarker:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2),
+"points": PackedFloat32Array(-0.7455485, -0.24999999, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HeadRemote/WeaponMarker:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(2),
+"points": PackedFloat32Array(-0.93817014, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HeadRemote/WeaponMarker:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HeadRemote/WeaponMarker:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(2),
+"points": PackedFloat32Array(-1.7526422, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HeadRemote/WeaponMarker:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HeadRemote/HurtboxArea3D/CollisionShape3D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:immobile")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HeadRemote/HurtboxArea3D/CollisionShape3D:position:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-6.55671e-08, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("HeadRemote/HurtboxArea3D/CollisionShape3D:position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("HeadRemote/HurtboxArea3D/CollisionShape3D:position:z")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_hqtel"]
+resource_name = "sword"
+length = 1.5000019
+step = 0.0333333
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HeadRemote/WeaponMarker:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 0, 0, 0),
+"points": PackedFloat32Array(0.90141445, 0, 0, 0.05555556, 0, 1.0570878, -0.05555556, 0, 0.111111104, 0, 0.13221861, -0.10936761, -0.5899187, 0.16666669, 0.89898455, 0.90141445, -0.16666669, -0.012298524, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 0.6666667, 1.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HeadRemote/WeaponMarker:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 0, 0, 0),
+"points": PackedFloat32Array(-0.7445419, 0, 0, 0.05555556, 0, 0.29969993, -0.05555556, 0, 0.111111104, 0, -1.0192252, -0.111111104, 0, 0.16666667, 0, -0.7445419, -0.16666669, -0.38024947, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 0.6666667, 1.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HeadRemote/WeaponMarker:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(2, 0, 0, 0),
+"points": PackedFloat32Array(-0.93817014, 0, 0, 0.05555556, 0, -0.93817014, -0.05555556, 0, 0.111111104, 0, -0.9381701, -0.111111104, 0, 0.16666667, 0, -0.93817014, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 0.6666667, 1.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HeadRemote/WeaponMarker:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(2, 0, 0, 0),
+"points": PackedFloat32Array(0, 0, 0, 0.05555556, 0, 0, -0.05555556, 0, 0.111111104, 0, 0.09214464, -0.111111104, 0, 0.16666667, 0, 0, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 0.6666667, 1.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HeadRemote/WeaponMarker:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(2, 0, 0, 0),
+"points": PackedFloat32Array(-1.7526422, 0, 0, 0.05555556, 0, -1.7526422, -0.05555556, 0, 0.111111104, 0, -1.0834635, -0.111111104, 0, 0.16666667, 0, -1.7526422, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 0.6666667, 1.5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HeadRemote/WeaponMarker:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(2, 0, 0, 0),
+"points": PackedFloat32Array(0, 0, 0, 0.05555556, 0, -0.5810201, -0.05555556, 0, 0.111111104, 0, 2.0340343, -0.111111104, 0, 0.16666667, 0, 0, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 0.6666667, 1.5)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HeadRemote/HurtboxArea3D/CollisionShape3D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.43333337, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:immobile")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 1.0333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HeadRemote/HurtboxArea3D/CollisionShape3D:position:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-6.55671e-08, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("HeadRemote/HurtboxArea3D/CollisionShape3D:position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("HeadRemote/HurtboxArea3D/CollisionShape3D:position:z")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2hs0m"]
+_data = {
+&"RESET": SubResource("Animation_sweqy"),
+&"sword": SubResource("Animation_hqtel")
+}
+
+[sub_resource type="Animation" id="Animation_onrkg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullscreenColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4flbx"]
+resource_name = "hurt"
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullscreenColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.27450982), Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_onrkg"]
+_data = {
+&"RESET": SubResource("Animation_onrkg"),
+&"hurt": SubResource("Animation_4flbx")
+}
+
+[node name="Player" groups=["player"] instance=ExtResource("1_4flbx")]
+script = ExtResource("2_onrkg")
+default_reticle = null
+controls = {
+&"BACKWARD": "move_backward",
+&"CROUCH": "crouch",
+&"FORWARD": "move_forward",
+&"JUMP": "jump",
+&"LEFT": "move_left",
+&"PAUSE": "pause",
+&"RIGHT": "move_right",
+&"SPRINT": "sprint"
+}
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Head" index="3"]
+remote_path = NodePath("../../HeadRemote")
+
+[node name="HeadRemote" type="Marker3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="WeaponMarker" type="Marker3D" parent="HeadRemote" index="0"]
+transform = Transform3D(-0.18084526, 0, -0.98351157, 0, 0.99999994, 0, 0.9835115, 0, -0.18084528, 0.90141445, -0.7455485, -0.93817014)
+metadata/_edit_group_ = true
+
+[node name="sword" parent="HeadRemote/WeaponMarker" index="0" instance=ExtResource("3_i3pqv")]
+
+[node name="HurtboxArea3D" type="Area3D" parent="HeadRemote" index="1"]
+script = ExtResource("4_hqtel")
+target_group = &"enemy"
+metadata/_custom_type_script = "uid://dhtqq780o0e5m"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HeadRemote/HurtboxArea3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.55671e-08, -0.5, -1.5)
+shape = SubResource("SphereShape3D_sweqy")
+disabled = true
+debug_color = Color(0.99772865, 0, 0.16966173, 0.41960785)
+
+[node name="WeaponAnimations" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_2hs0m")
+}
+
+[node name="PlayerUI" type="CanvasLayer" parent="." index="9"]
+
+[node name="PlayerUIAnimationPlayer" type="AnimationPlayer" parent="PlayerUI" index="0"]
+libraries = {
+&"": SubResource("AnimationLibrary_onrkg")
+}
+
+[node name="FullscreenColorRect" type="ColorRect" parent="PlayerUI" index="1"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0, 0, 0)

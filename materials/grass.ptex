@@ -1,0 +1,139 @@
+{
+	"connections": [
+		{
+			"from": "fbm3",
+			"from_port": 0,
+			"to": "colorize",
+			"to_port": 0
+		},
+		{
+			"from": "colorize",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 0
+		},
+		{
+			"from": "fbm3",
+			"from_port": 0,
+			"to": "normal_map2",
+			"to_port": 0
+		},
+		{
+			"from": "normal_map2",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 4
+		}
+	],
+	"label": "Graph",
+	"longdesc": "",
+	"name": "@Node@817",
+	"node_position": {
+		"x": 0.0,
+		"y": 0.0
+	},
+	"nodes": [
+		{
+			"export_last_target": "Blender",
+			"export_paths": {
+				"Blender": "/home/apples/Repos/7dfps-jam-2025/grass",
+				"Godot/Godot 4 Standard": "/home/apples/Repos/7dfps-jam-2025/materials/grass"
+			},
+			"name": "Material",
+			"node_position": {
+				"x": 477.0,
+				"y": 95.0
+			},
+			"parameters": {
+				"albedo_color": {
+					"a": 1.0,
+					"b": 1.0,
+					"g": 1.0,
+					"r": 1.0,
+					"type": "Color"
+				},
+				"ao": 1.0,
+				"depth_scale": 0.5,
+				"emission_energy": 1.0,
+				"flags_transparent": true,
+				"metallic": 0.0,
+				"normal": 1.0,
+				"roughness": 1.0,
+				"size": 8,
+				"sss": 1.0
+			},
+			"seed_int": 0,
+			"type": "material"
+		},
+		{
+			"name": "fbm3",
+			"node_position": {
+				"x": -54.2080688476562,
+				"y": 41.6627197265625
+			},
+			"parameters": {
+				"folds": 0.0,
+				"iterations": 3.0,
+				"noise": 9,
+				"offset": 0.34,
+				"persistence": 0.5,
+				"scale_x": 10.0,
+				"scale_y": 10.0
+			},
+			"seed_int": 841230464,
+			"type": "fbm3"
+		},
+		{
+			"name": "colorize",
+			"node_position": {
+				"x": 229.485412597656,
+				"y": 70.1586608886719
+			},
+			"parameters": {
+				"gradient": {
+					"interpolation": 1,
+					"points": [
+						{
+							"a": 1.0,
+							"b": 0.053924560546875,
+							"g": 0.102727174758911,
+							"pos": 0.0,
+							"r": 0.12109375
+						},
+						{
+							"a": 1.0,
+							"b": 0.322620391845703,
+							"g": 0.5625,
+							"pos": 1.0,
+							"r": 0.261474609375
+						}
+					],
+					"type": "Gradient"
+				}
+			},
+			"seed_int": 0,
+			"type": "colorize"
+		},
+		{
+			"name": "normal_map2",
+			"node_position": {
+				"x": 198.485412597656,
+				"y": 245.158660888672
+			},
+			"parameters": {
+				"buffer": 1.0,
+				"param2": 0.0,
+				"size": 8,
+				"strength": 1.0
+			},
+			"seed_int": 0,
+			"type": "normal_map2"
+		}
+	],
+	"parameters": {
+
+	},
+	"seed_int": 0,
+	"shortdesc": "",
+	"type": "graph"
+}

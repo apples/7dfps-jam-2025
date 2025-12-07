@@ -1,0 +1,118 @@
+[gd_resource type="BehaviorTree" load_steps=29 format=3 uid="uid://baujj4cjblgqd"]
+
+[ext_resource type="Script" uid="uid://c08tikaphqlnv" path="res://ai/tasks/in_range.gd" id="1_ddj77"]
+[ext_resource type="Script" uid="uid://bxsxmpmm5bpc0" path="res://ai/tasks/stop_moving.gd" id="1_hvw1g"]
+[ext_resource type="Script" uid="uid://dpmbbem53yn3d" path="res://ai/tasks/fire_one_shot.gd" id="1_m5b2d"]
+[ext_resource type="Script" uid="uid://bgw4iba5jbljr" path="res://ai/tasks/random_cooldown.gd" id="2_btmcw"]
+[ext_resource type="Script" uid="uid://car8n8l24uyy5" path="res://ai/tasks/navigation_agent_movement.gd" id="4_llmsj"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_2a0xt"]
+var/target/name = &"target"
+var/target/type = 24
+var/target/hint = 34
+var/target/hint_string = "Node3D"
+var/target_in_sight/name = &"target_in_sight"
+var/target_in_sight/type = 1
+var/target_in_sight/value = false
+var/target_in_sight/hint = 0
+var/target_in_sight/hint_string = ""
+var/speed/name = &"speed"
+var/speed/type = 3
+var/speed/value = 5.0
+var/speed/hint = 0
+var/speed/hint_string = ""
+var/acceleration/name = &"acceleration"
+var/acceleration/type = 3
+var/acceleration/value = 200.0
+var/acceleration/hint = 0
+var/acceleration/hint_string = ""
+
+[sub_resource type="BTCondition" id="BTCondition_llmsj"]
+script = ExtResource("1_ddj77")
+vision_angle = 45.0
+
+[sub_resource type="BTAction" id="BTAction_llmsj"]
+script = ExtResource("1_hvw1g")
+
+[sub_resource type="BTAction" id="BTAction_m5b2d"]
+script = ExtResource("1_m5b2d")
+one_shot_path = "parameters/AttackOneShot"
+
+[sub_resource type="BTParallel" id="BTParallel_4c6kr"]
+num_successes_required = 2
+children = [SubResource("BTAction_llmsj"), SubResource("BTAction_m5b2d")]
+
+[sub_resource type="BTSequence" id="BTSequence_4c6kr"]
+custom_name = "AttackSequence"
+children = [SubResource("BTCondition_llmsj"), SubResource("BTParallel_4c6kr")]
+
+[sub_resource type="BBNode" id="BBNode_llmsj"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_4c6kr"]
+node = SubResource("BBNode_llmsj")
+method = &"update_target"
+
+[sub_resource type="BTCooldown" id="BTCooldown_fvbtu"]
+duration = 0.2
+children = [SubResource("BTCallMethod_4c6kr")]
+
+[sub_resource type="BBVariant" id="BBVariant_llmsj"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_4c6kr"]
+variable = &"target_in_sight"
+value = SubResource("BBVariant_llmsj")
+
+[sub_resource type="BBNode" id="BBNode_m5b2d"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_ddj77"]
+node = SubResource("BBNode_m5b2d")
+method = &"update_target"
+
+[sub_resource type="BTCooldown" id="BTCooldown_llmsj"]
+duration = 0.2
+children = [SubResource("BTCallMethod_ddj77")]
+
+[sub_resource type="BTAlwaysSucceed" id="BTAlwaysSucceed_4c6kr"]
+children = [SubResource("BTCooldown_llmsj")]
+
+[sub_resource type="BTAction" id="BTAction_4c6kr"]
+script = ExtResource("4_llmsj")
+
+[sub_resource type="BTDynamicSequence" id="BTDynamicSequence_4c6kr"]
+children = [SubResource("BTAlwaysSucceed_4c6kr"), SubResource("BTAction_4c6kr")]
+
+[sub_resource type="BTSequence" id="BTSequence_fvbtu"]
+custom_name = "ChasingSequence"
+children = [SubResource("BTCooldown_fvbtu"), SubResource("BTCheckVar_4c6kr"), SubResource("BTDynamicSequence_4c6kr")]
+
+[sub_resource type="BTAction" id="BTAction_ddj77"]
+script = ExtResource("1_m5b2d")
+one_shot_path = "parameters/IdleActionOneShot"
+
+[sub_resource type="BTDecorator" id="BTDecorator_btmcw"]
+children = [SubResource("BTAction_ddj77")]
+script = ExtResource("2_btmcw")
+min_duration = 2.0
+max_duration = 5.0
+start_cooled = true
+
+[sub_resource type="BTAction" id="BTAction_btmcw"]
+script = ExtResource("1_hvw1g")
+
+[sub_resource type="BTDynamicSelector" id="BTDynamicSelector_hvw1g"]
+custom_name = "IdleDynamicSelector"
+children = [SubResource("BTDecorator_btmcw"), SubResource("BTAction_btmcw")]
+
+[sub_resource type="BTDynamicSelector" id="BTDynamicSelector_llmsj"]
+children = [SubResource("BTSequence_4c6kr"), SubResource("BTSequence_fvbtu"), SubResource("BTDynamicSelector_hvw1g")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_2a0xt")
+root_task = SubResource("BTDynamicSelector_llmsj")

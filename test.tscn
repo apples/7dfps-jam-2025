@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0aebpdwj301u"]
+
+[ext_resource type="PackedScene" uid="uid://dr4n2p5sy4dwt" path="res://levels/level_1.tscn" id="1_8uh7m"]
+[ext_resource type="PackedScene" uid="uid://bbr55tpw6565w" path="res://player.tscn" id="2_6uqi0"]
+[ext_resource type="PackedScene" uid="uid://8826iadsphwf" path="res://enemies/skeleton.tscn" id="4_ppyta"]
+
+[node name="Test" type="Node3D"]
+
+[node name="level1" parent="." instance=ExtResource("1_8uh7m")]
+
+[node name="Player" parent="." instance=ExtResource("2_6uqi0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, 0)
+
+[node name="Skeleton" parent="." instance=ExtResource("4_ppyta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.663303, 1.0000001, -11.534832)
+
+[node name="Skeleton2" parent="." instance=ExtResource("4_ppyta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.249844, 1.0000001, -9.366937)
+
+[node name="Skeleton3" parent="." instance=ExtResource("4_ppyta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.802296, 1.0000001, -5.9801197)
+
+[node name="Skeleton4" parent="." instance=ExtResource("4_ppyta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.322441, 1.0000001, -1.5484371)
+
+[node name="Skeleton5" parent="." instance=ExtResource("4_ppyta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.351889, 1.0000001, 3.967576)
+
+[node name="Skeleton6" parent="." instance=ExtResource("4_ppyta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.567919, 1.0000001, -14.507638)
+
+[node name="Skeleton7" parent="." instance=ExtResource("4_ppyta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.420277, 1.0000001, -9.586819)
