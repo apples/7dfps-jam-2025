@@ -74,6 +74,7 @@ shape = SubResource("CapsuleShape3D_eq7ty")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="RootMotionView" type="RootMotionView" parent="."]
+visible = false
 animation_path = NodePath("../AnimationTree")
 
 [node name="skeleton" parent="." instance=ExtResource("1_d0kqj")]

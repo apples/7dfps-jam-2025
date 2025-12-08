@@ -10319,6 +10319,13 @@ _subresources={
 "slice_99/start_frame": 0,
 "slices/amount": 0
 }
+},
+"materials": {
+"Material": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://enemies/skeleton_materials/Material.tres",
+"use_external/path": "uid://bnl2klws5pvel"
+}
 }
 }
 blender/nodes/visible=0
@@ -10327,7 +10334,7 @@ blender/nodes/punctual_lights=true
 blender/nodes/cameras=true
 blender/nodes/custom_properties=true
 blender/nodes/modifiers=1
-blender/meshes/colors=false
+blender/meshes/colors=true
 blender/meshes/uvs=true
 blender/meshes/normals=true
 blender/meshes/export_geometry_nodes_instances=false
