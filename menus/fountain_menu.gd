@@ -4,6 +4,12 @@ const MENU_CONFIRM = preload("uid://21iio861j1ek")
 
 @onready var buttons: VBoxContainer = $Buttons
 
+func _enter_tree() -> void:
+	get_tree().paused = true
+
+func _exit_tree() -> void:
+	get_tree().paused = false
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	modulate.a = 0.0
@@ -27,6 +33,7 @@ func leave() -> void:
 
 func _on_rest_clicked() -> void:
 	AudioManager.play_sfx(MENU_CONFIRM)
+	Globals.player.status.current_hp = Globals.player.status.max_hp
 
 func _on_leave_clicked() -> void:
 	AudioManager.play_sfx(MENU_CONFIRM)

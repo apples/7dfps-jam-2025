@@ -17,6 +17,7 @@ warnings/check_invalid_track_paths=false
 config/name="7dfps-jam-2025"
 run/main_scene="uid://d0aebpdwj301u"
 config/features=PackedStringArray("4.5", "Forward Plus")
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [autoload]

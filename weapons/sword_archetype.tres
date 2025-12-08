@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponArchetype" load_steps=3 format=3 uid="uid://c4hi7fdg0fv86"]
+
+[ext_resource type="PackedScene" uid="uid://bnh3miiygggaj" path="res://weapons/sword.blend" id="1_2n830"]
+[ext_resource type="Script" uid="uid://ctm3noqwaq263" path="res://weapon_archetype.gd" id="1_t54m7"]
+
+[resource]
+script = ExtResource("1_t54m7")
+name = "Sword"
+model = ExtResource("1_2n830")
+stamina_cost = 80
+metadata/_custom_type_script = "uid://ctm3noqwaq263"

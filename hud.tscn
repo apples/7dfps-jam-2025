@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccu0wvhqnlyol"]
+
+[ext_resource type="Script" uid="uid://cjy234ei22eg5" path="res://hud.gd" id="1_37p78"]
+
+[node name="HUD" type="Control"]
+process_priority = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_37p78")
+
+[node name="HpBar" type="ColorRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.024479168
+anchor_top = 0.047222223
+anchor_right = 0.12864584
+anchor_bottom = 0.07962963
+color = Color(0.16206557, 0.1620656, 0.16206557, 1)
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="HpBarFill" type="ColorRect" parent="HpBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9129615, 0.22608131, 0.35143065, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="StaminaBar" type="ColorRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.024479168
+anchor_top = 0.11018518
+anchor_right = 0.12864584
+anchor_bottom = 0.1425926
+color = Color(0.16206557, 0.1620656, 0.16206557, 1)
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="StaminaBarFill" type="ColorRect" parent="StaminaBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.10492056, 0.5910374, 0.660029, 1)
+metadata/_edit_use_anchors_ = true

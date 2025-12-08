@@ -5,6 +5,12 @@ const MENU_CONFIRM = preload("uid://21iio861j1ek")
 @onready var buttons: VBoxContainer = $Buttons
 @onready var color_rect: ColorRect = $ColorRect
 
+func _enter_tree() -> void:
+	get_tree().paused = true
+
+func _exit_tree() -> void:
+	get_tree().paused = false
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	modulate.a = 0.0
