@@ -464,6 +464,13 @@ controls = {
 &"RIGHT": "move_right",
 &"SPRINT": "sprint"
 }
+pausing_enabled = false
+
+[node name="InteractRayCast" type="RayCast3D" parent="Head/Camera" index="0"]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -2)
+collision_mask = 2
+collide_with_areas = true
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Head" index="3"]
 remote_path = NodePath("../../HeadRemote")

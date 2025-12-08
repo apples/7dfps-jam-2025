@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://deabhxcs4fsqn"]
+
+[ext_resource type="Script" uid="uid://c2387iv1rh7fh" path="res://menus/pause_menu.gd" id="1_p1qj3"]
+[ext_resource type="Script" uid="uid://b3sqs712lpooa" path="res://menus/selectable_control.gd" id="2_0wv6w"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p1qj3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3137255)
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -434.0
+offset_top = -67.0
+offset_right = 434.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resume" type="MarginContainer" parent="Buttons"]
+layout_mode = 2
+mouse_filter = 0
+script = ExtResource("2_0wv6w")
+metadata/_custom_type_script = "uid://b3sqs712lpooa"
+
+[node name="Label" type="Label" parent="Buttons/Resume"]
+layout_mode = 2
+text = "Resume"
+horizontal_alignment = 1
+
+[node name="Quit" type="MarginContainer" parent="Buttons"]
+layout_mode = 2
+mouse_filter = 0
+script = ExtResource("2_0wv6w")
+metadata/_custom_type_script = "uid://b3sqs712lpooa"
+
+[node name="Label" type="Label" parent="Buttons/Quit"]
+layout_mode = 2
+text = "Quit Game"
+horizontal_alignment = 1
+
+[connection signal="clicked" from="Buttons/Resume" to="." method="_on_resume_clicked"]
+[connection signal="clicked" from="Buttons/Quit" to="." method="_on_quit_clicked"]

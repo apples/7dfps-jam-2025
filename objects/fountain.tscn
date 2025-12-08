@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dn6psaqqe4p13"]
+
+[ext_resource type="Script" uid="uid://dnbtyjoc1bt7w" path="res://objects/fountain.gd" id="1_bjqgn"]
+[ext_resource type="PackedScene" uid="uid://cfwd2xbubim4v" path="res://objects/fountain.blend" id="1_e8bwi"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_e8bwi"]
+height = 1.475
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lj1p4"]
+height = 1.0
+
+[node name="Fountain" type="Area3D"]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+monitorable = false
+script = ExtResource("1_bjqgn")
+
+[node name="fountain" parent="." instance=ExtResource("1_e8bwi")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7375, 0)
+shape = SubResource("CylinderShape3D_e8bwi")
+debug_color = Color(0.16254553, 0.6446697, 0, 0.41960785)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_lj1p4")

@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cjuiraqtjajuy"]
+
+[ext_resource type="FontFile" uid="uid://bmiu4bl4hnn1e" path="res://fonts/beholden/Beholden-Regular.ttf" id="1_e7bfs"]
+
+[resource]
+default_font = ExtResource("1_e7bfs")
+default_font_size = 64
+Label/colors/font_shadow_color = Color(0, 0, 0, 1)
+Label/constants/shadow_offset_x = 2
+Label/constants/shadow_offset_y = 2

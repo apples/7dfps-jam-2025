@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://c300aabr13gdi"]
+
+[ext_resource type="Script" uid="uid://cawljfiumswhp" path="res://menus/fountain_menu.gd" id="1_6bkio"]
+[ext_resource type="Script" uid="uid://b3sqs712lpooa" path="res://menus/selectable_control.gd" id="1_m0164"]
+
+[node name="FountainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6bkio")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3137255)
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -434.0
+offset_top = -67.0
+offset_right = 434.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Rest" type="MarginContainer" parent="Buttons"]
+layout_mode = 2
+mouse_filter = 0
+script = ExtResource("1_m0164")
+autofocus = true
+metadata/_custom_type_script = "uid://b3sqs712lpooa"
+
+[node name="Label" type="Label" parent="Buttons/Rest"]
+layout_mode = 2
+text = "Rest"
+horizontal_alignment = 1
+
+[node name="Leave" type="MarginContainer" parent="Buttons"]
+layout_mode = 2
+mouse_filter = 0
+script = ExtResource("1_m0164")
+metadata/_custom_type_script = "uid://b3sqs712lpooa"
+
+[node name="Label" type="Label" parent="Buttons/Leave"]
+layout_mode = 2
+text = "Leave"
+horizontal_alignment = 1
+
+[connection signal="clicked" from="Buttons/Rest" to="." method="_on_rest_clicked"]
+[connection signal="clicked" from="Buttons/Leave" to="." method="_on_leave_clicked"]
