@@ -33,7 +33,7 @@ func leave() -> void:
 
 func _on_rest_clicked() -> void:
 	AudioManager.play_sfx(MENU_CONFIRM)
-	Globals.player.status.current_hp = Globals.player.status.max_hp
+	Globals.player.rest()
 
 func _on_leave_clicked() -> void:
 	AudioManager.play_sfx(MENU_CONFIRM)

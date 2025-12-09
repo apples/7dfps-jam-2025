@@ -9,3 +9,5 @@ class_name PlayerStatus
 @export var sprint_stamina_per_sec: int = 25
 
 @export var equipped_weapon: WeaponArchetype
+
+@export var respawn_point: Vector3

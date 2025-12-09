@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bxsxmpmm5bpc0" path="res://ai/tasks/stop_moving.gd" id="1_hvw1g"]
 [ext_resource type="Script" uid="uid://dpmbbem53yn3d" path="res://ai/tasks/fire_one_shot.gd" id="1_m5b2d"]
 [ext_resource type="Script" uid="uid://bgw4iba5jbljr" path="res://ai/tasks/random_cooldown.gd" id="2_btmcw"]
-[ext_resource type="Script" uid="uid://car8n8l24uyy5" path="res://ai/tasks/navigation_agent_movement.gd" id="4_llmsj"]
+[ext_resource type="Script" uid="uid://car8n8l24uyy5" path="res://ai/tasks/navigation/navigation_agent_movement.gd" id="4_llmsj"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_2a0xt"]
 var/target/name = &"target"

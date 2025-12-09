@@ -1,5 +1,7 @@
 extends "res://addons/fpc/character.gd"
 
+signal respawn_request()
+
 const PAUSE_MENU = preload("uid://deabhxcs4fsqn")
 const OOF = preload("uid://cau7886fgih4k")
 
@@ -9,6 +11,8 @@ var stamina_accum: float = 0.0
 var stamina_recovery_buffer: int = 0
 
 var weapon_node: Node3D
+
+var input_disabled: bool = false
 
 @onready var player_ui_animation_player: AnimationPlayer = $PlayerUI/PlayerUIAnimationPlayer
 @onready var weapon_animations: AnimationPlayer = $WeaponAnimations
@@ -43,6 +47,9 @@ func _process(delta: float) -> void:
 		status.current_stamina = clampi(status.current_stamina + stamina_change, 0, status.max_stamina)
 
 func _unhandled_input(event: InputEvent) -> void:
+	if input_disabled:
+		return
+	
 	super._unhandled_input(event)
 	
 	if not weapon_animations.is_playing():
@@ -76,4 +83,26 @@ func equip_weapon(weapon: WeaponArchetype) -> void:
 func hurt() -> void:
 	player_ui_animation_player.play("hurt")
 	status.current_hp -= 10
-	AudioManager.play_sfx(OOF)
+	if status.current_hp <= 0:
+		die()
+	else:
+		AudioManager.play_sfx(OOF)
+
+func rest() -> void:
+	player_ui_animation_player.play("wake")
+	status.current_hp = status.max_hp
+	status.current_stamina = status.max_stamina
+	stamina_recovery_buffer = 0
+	stamina_accum = 0
+
+func die() -> void:
+	weapon_animations.stop()
+	player_ui_animation_player.play("death")
+	immobile = true
+	input_disabled = true
+	set_physics_process(false)
+	await player_ui_animation_player.animation_finished
+	respawn_request.emit()
+	immobile = false
+	input_disabled = false
+	set_physics_process(true)
