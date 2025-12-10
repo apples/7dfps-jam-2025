@@ -505,6 +505,8 @@ _data = {
 
 [node name="Player" groups=["player"] instance=ExtResource("1_4flbx")]
 script = ExtResource("2_onrkg")
+sprint_speed = 4.5
+acceleration = 100.0
 default_reticle = null
 controls = {
 &"BACKWARD": "move_backward",

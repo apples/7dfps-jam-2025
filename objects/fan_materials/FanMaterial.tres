@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dyg5fwvyumxus"]
+
+[ext_resource type="Texture2D" uid="uid://dlxtmap8kmh5v" path="res://objects/fan_materials/fan.png" id="1_csnxo"]
+
+[resource]
+resource_name = "FanMaterial"
+cull_mode = 2
+albedo_texture = ExtResource("1_csnxo")
+metallic = 1.0
+roughness = 0.20000002

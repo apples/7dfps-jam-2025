@@ -111,8 +111,6 @@ extends CharacterBody3D
 @export var pausing_enabled : bool = true
 ## Use with caution.
 @export var gravity_enabled : bool = true
-## If your game changes the gravity value during gameplay, check this property to allow the player to experience the change in gravity.
-@export var dynamic_gravity : bool = false
 
 #endregion
 
@@ -128,9 +126,6 @@ var was_on_floor : bool = true # Was the player on the floor last frame (for lan
 
 # The reticle should always have a Control node as the root
 var RETICLE : Control
-
-# Get the gravity from the project settings to be synced with RigidBody nodes
-var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity") # Don't set this as a const, see the gravity section in _physics_process
 
 # Stores mouse input for rotating the camera in the physics process
 var mouseInput : Vector2 = Vector2(0,0)
@@ -169,10 +164,11 @@ func _process(_delta):
 
 func _physics_process(delta): # Most things happen here.
 	# Gravity
-	if dynamic_gravity:
-		gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-	if not is_on_floor() and gravity and gravity_enabled:
-		velocity.y -= gravity * delta
+	var gravity = get_gravity()
+	var up = -gravity.normalized()
+	up_direction = up if up != Vector3.ZERO else Vector3.UP
+	if gravity and gravity_enabled:
+		velocity += gravity * delta
 
 	handle_jumping()
 
@@ -223,23 +219,17 @@ func handle_jumping():
 func handle_movement(delta, input_dir):
 	var direction = input_dir.rotated(-HEAD.rotation.y)
 	direction = Vector3(direction.x, 0, direction.y)
-	move_and_slide()
-
-	if in_air_momentum:
-		if is_on_floor():
-			if motion_smoothing:
-				velocity.x = lerp(velocity.x, direction.x * speed, acceleration * delta)
-				velocity.z = lerp(velocity.z, direction.z * speed, acceleration * delta)
-			else:
-				velocity.x = direction.x * speed
-				velocity.z = direction.z * speed
-	else:
+	
+	if not in_air_momentum or is_on_floor():
 		if motion_smoothing:
-			velocity.x = lerp(velocity.x, direction.x * speed, acceleration * delta)
-			velocity.z = lerp(velocity.z, direction.z * speed, acceleration * delta)
+			velocity.x = move_toward(velocity.x, direction.x * speed, acceleration * delta)
+			velocity.z = move_toward(velocity.z, direction.z * speed, acceleration * delta)
 		else:
 			velocity.x = direction.x * speed
 			velocity.z = direction.z * speed
+	
+	move_and_slide()
+
 
 
 func handle_head_rotation():

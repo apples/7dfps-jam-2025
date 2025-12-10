@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://rqvy6hogse6p"
-path="res://.godot/imported/level1.blend-cb22e2a30eb4c346534e8199233c61d7.scn"
+uid="uid://dwhuwlodwpg1l"
+path="res://.godot/imported/fan.blend-932198dbe8e1319f353f42f6d7781038.scn"
 
 [deps]
 
-source_file="res://levels/level1.blend"
-dest_files=["res://.godot/imported/level1.blend-cb22e2a30eb4c346534e8199233c61d7.scn"]
+source_file="res://objects/fan.blend"
+dest_files=["res://.godot/imported/fan.blend-932198dbe8e1319f353f42f6d7781038.scn"]
 
 [params]
 
@@ -39,26 +39,15 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "materials": {
-"GrassMaterial": {
+"FanMaterial": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://materials/grass.tres",
-"use_external/path": "res://materials/grass.tres"
+"use_external/fallback_path": "res://objects/fan_materials/FanMaterial.tres",
+"use_external/path": "uid://dyg5fwvyumxus"
 },
-"LavaMaterial": {
+"WindMaterial": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://materials/lava.tres",
-"use_external/path": "res://materials/lava.tres"
-},
-"StoneMaterial": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://materials/stonewall.tres",
-"use_external/path": "uid://bg2f8r8yjhc52"
-}
-},
-"nodes": {
-"PATH:Cube": {
-"generate/physics": true,
-"physics/shape_type": 2
+"use_external/fallback_path": "res://objects/fan_materials/WindMaterial.tres",
+"use_external/path": "uid://dchh7eywwf2tk"
 }
 }
 }
