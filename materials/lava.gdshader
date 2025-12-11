@@ -193,7 +193,7 @@ vec4 o20265366988770_0_1_rgba = o20265366988770_gradient_gradient_fct((dot((o104
 	vec4 color_tex = o20265366988770_0_1_rgba;
 	color_tex = mix(pow((color_tex + vec4(0.055)) * (1.0 / (1.0 + 0.055)),vec4(2.4)),color_tex * (1.0 / 12.92),lessThan(color_tex,vec4(0.04045)));
 	ALBEDO = color_tex.rgb;
-	ALPHA = color_tex.a;
+	//ALPHA = color_tex.a;
 }
 
 

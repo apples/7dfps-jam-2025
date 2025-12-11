@@ -20,6 +20,7 @@ func _physics_process(_delta: float) -> void:
 
 func interact():
 	assert(Globals.menu_canvas_layer)
+	print("Respawn point updated: %s => %s" % [Globals.player.status.respawn_point, $RespawnMarker.global_position])
 	Globals.player.status.respawn_point = $RespawnMarker.global_position
 	var menu = FOUNTAIN_MENU.instantiate()
 	Globals.menu_canvas_layer.add_child(menu)

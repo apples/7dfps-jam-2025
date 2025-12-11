@@ -130,6 +130,8 @@ var RETICLE : Control
 # Stores mouse input for rotating the camera in the physics process
 var mouseInput : Vector2 = Vector2(0,0)
 
+var wind_velocity: Vector3 = Vector3.ZERO
+
 #endregion
 
 
@@ -166,7 +168,7 @@ func _physics_process(delta): # Most things happen here.
 	# Gravity
 	var gravity = get_gravity()
 	var up = -gravity.normalized()
-	up_direction = up if up != Vector3.ZERO else Vector3.UP
+	#up_direction = up if up != Vector3.ZERO else Vector3.UP
 	if gravity and gravity_enabled:
 		velocity += gravity * delta
 
@@ -215,21 +217,26 @@ func handle_jumping():
 					JUMP_ANIMATION.play("jump", 0.25)
 				velocity.y += jump_velocity
 
-
 func handle_movement(delta, input_dir):
 	var direction = input_dir.rotated(-HEAD.rotation.y)
 	direction = Vector3(direction.x, 0, direction.y)
 	
 	if not in_air_momentum or is_on_floor():
-		if motion_smoothing:
-			velocity.x = move_toward(velocity.x, direction.x * speed, acceleration * delta)
-			velocity.z = move_toward(velocity.z, direction.z * speed, acceleration * delta)
-		else:
-			velocity.x = direction.x * speed
-			velocity.z = direction.z * speed
+		velocity += direction * speed * acceleration * delta
+	elif in_air_momentum:
+		wind_velocity += direction * speed
+	
+	var friction = 5.0
+	
+	if is_on_floor():
+		velocity -= velocity.slide(get_floor_normal()) * friction * delta
+	
+	var rel_wind_velocity := wind_velocity - velocity
+	var wind_force := 0.1 * rel_wind_velocity.normalized() * rel_wind_velocity.length_squared()
+	velocity += wind_force * delta
+	wind_velocity = Vector3.ZERO
 	
 	move_and_slide()
-
 
 
 func handle_head_rotation():

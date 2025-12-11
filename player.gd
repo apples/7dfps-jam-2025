@@ -13,6 +13,7 @@ var stamina_recovery_buffer: int = 0
 var weapon_node: Node3D
 
 var input_disabled: bool = false
+var invulnerable: bool = false
 
 @onready var player_ui_animation_player: AnimationPlayer = $PlayerUI/PlayerUIAnimationPlayer
 @onready var weapon_animations: AnimationPlayer = $WeaponAnimations
@@ -21,6 +22,7 @@ var input_disabled: bool = false
 
 func _enter_tree() -> void:
 	Globals.player = self
+	status.respawn_point = global_position
 
 func _ready():
 	super._ready()
@@ -81,6 +83,8 @@ func equip_weapon(weapon: WeaponArchetype) -> void:
 	weapon_marker.add_child(weapon_node)
 
 func hurt() -> void:
+	if invulnerable:
+		return
 	player_ui_animation_player.play("hurt")
 	status.current_hp -= 10
 	if status.current_hp <= 0:
@@ -100,9 +104,15 @@ func die() -> void:
 	player_ui_animation_player.play("death")
 	immobile = true
 	input_disabled = true
+	invulnerable = true
 	set_physics_process(false)
+	
 	await player_ui_animation_player.animation_finished
 	respawn_request.emit()
+	
 	immobile = false
 	input_disabled = false
+	invulnerable = false
+	velocity = Vector3.ZERO
+	wind_velocity = Vector3.ZERO
 	set_physics_process(true)
