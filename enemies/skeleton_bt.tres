@@ -1,10 +1,10 @@
 [gd_resource type="BehaviorTree" load_steps=29 format=3 uid="uid://baujj4cjblgqd"]
 
-[ext_resource type="Script" uid="uid://c08tikaphqlnv" path="res://ai/tasks/in_range.gd" id="1_ddj77"]
 [ext_resource type="Script" uid="uid://bxsxmpmm5bpc0" path="res://ai/tasks/stop_moving.gd" id="1_hvw1g"]
+[ext_resource type="Script" uid="uid://c08tikaphqlnv" path="res://ai/tasks/in_range.gd" id="1_llmsj"]
 [ext_resource type="Script" uid="uid://dpmbbem53yn3d" path="res://ai/tasks/fire_one_shot.gd" id="1_m5b2d"]
 [ext_resource type="Script" uid="uid://bgw4iba5jbljr" path="res://ai/tasks/random_cooldown.gd" id="2_btmcw"]
-[ext_resource type="Script" uid="uid://car8n8l24uyy5" path="res://ai/tasks/navigation/navigation_agent_movement.gd" id="4_llmsj"]
+[ext_resource type="Script" uid="uid://car8n8l24uyy5" path="res://ai/tasks/navigation/navigation_agent_movement.gd" id="2_ddj77"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_2a0xt"]
 var/target/name = &"target"
@@ -27,24 +27,24 @@ var/acceleration/value = 200.0
 var/acceleration/hint = 0
 var/acceleration/hint_string = ""
 
-[sub_resource type="BTCondition" id="BTCondition_llmsj"]
-script = ExtResource("1_ddj77")
+[sub_resource type="BTCondition" id="BTCondition_4c6kr"]
+script = ExtResource("1_llmsj")
 vision_angle = 45.0
-
-[sub_resource type="BTAction" id="BTAction_llmsj"]
-script = ExtResource("1_hvw1g")
 
 [sub_resource type="BTAction" id="BTAction_m5b2d"]
 script = ExtResource("1_m5b2d")
 one_shot_path = "parameters/AttackOneShot"
 
+[sub_resource type="BTAction" id="BTAction_llmsj"]
+script = ExtResource("1_hvw1g")
+
 [sub_resource type="BTParallel" id="BTParallel_4c6kr"]
 num_successes_required = 2
-children = [SubResource("BTAction_llmsj"), SubResource("BTAction_m5b2d")]
+children = [SubResource("BTAction_m5b2d"), SubResource("BTAction_llmsj")]
 
 [sub_resource type="BTSequence" id="BTSequence_4c6kr"]
 custom_name = "AttackSequence"
-children = [SubResource("BTCondition_llmsj"), SubResource("BTParallel_4c6kr")]
+children = [SubResource("BTCondition_4c6kr"), SubResource("BTParallel_4c6kr")]
 
 [sub_resource type="BBNode" id="BBNode_llmsj"]
 saved_value = NodePath(".")
@@ -67,30 +67,30 @@ resource_name = "true"
 variable = &"target_in_sight"
 value = SubResource("BBVariant_llmsj")
 
-[sub_resource type="BBNode" id="BBNode_m5b2d"]
+[sub_resource type="BBNode" id="BBNode_4c6kr"]
 saved_value = NodePath(".")
 resource_name = "."
 
-[sub_resource type="BTCallMethod" id="BTCallMethod_ddj77"]
-node = SubResource("BBNode_m5b2d")
+[sub_resource type="BTCallMethod" id="BTCallMethod_fvbtu"]
+node = SubResource("BBNode_4c6kr")
 method = &"update_target"
 
-[sub_resource type="BTCooldown" id="BTCooldown_llmsj"]
+[sub_resource type="BTCooldown" id="BTCooldown_t666d"]
 duration = 0.2
-children = [SubResource("BTCallMethod_ddj77")]
+children = [SubResource("BTCallMethod_fvbtu")]
 
-[sub_resource type="BTAlwaysSucceed" id="BTAlwaysSucceed_4c6kr"]
-children = [SubResource("BTCooldown_llmsj")]
+[sub_resource type="BTAlwaysSucceed" id="BTAlwaysSucceed_rckdo"]
+children = [SubResource("BTCooldown_t666d")]
 
-[sub_resource type="BTAction" id="BTAction_4c6kr"]
-script = ExtResource("4_llmsj")
+[sub_resource type="BTAction" id="BTAction_g1esa"]
+script = ExtResource("2_ddj77")
 
-[sub_resource type="BTDynamicSequence" id="BTDynamicSequence_4c6kr"]
-children = [SubResource("BTAlwaysSucceed_4c6kr"), SubResource("BTAction_4c6kr")]
+[sub_resource type="BTDynamicSequence" id="BTDynamicSequence_j3ib0"]
+children = [SubResource("BTAlwaysSucceed_rckdo"), SubResource("BTAction_g1esa")]
 
 [sub_resource type="BTSequence" id="BTSequence_fvbtu"]
 custom_name = "ChasingSequence"
-children = [SubResource("BTCooldown_fvbtu"), SubResource("BTCheckVar_4c6kr"), SubResource("BTDynamicSequence_4c6kr")]
+children = [SubResource("BTCooldown_fvbtu"), SubResource("BTCheckVar_4c6kr"), SubResource("BTDynamicSequence_j3ib0")]
 
 [sub_resource type="BTAction" id="BTAction_ddj77"]
 script = ExtResource("1_m5b2d")

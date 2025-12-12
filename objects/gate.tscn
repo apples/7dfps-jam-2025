@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc2pv4t748gx0"]
+
+[ext_resource type="PackedScene" uid="uid://b2kdwktmvcd4o" path="res://objects/gate.blend" id="1_6x781"]
+[ext_resource type="Script" uid="uid://bsyaqfet2yr0x" path="res://objects/gate.gd" id="2_srs85"]
+[ext_resource type="Script" uid="uid://ckl4f0tanlwcp" path="res://objects/power_receiver.gd" id="3_sdcee"]
+
+[node name="Gate" instance=ExtResource("1_6x781")]
+script = ExtResource("2_srs85")
+
+[node name="PowerReceiver" type="Node" parent="." index="3"]
+script = ExtResource("3_sdcee")
+metadata/_custom_type_script = "uid://ckl4f0tanlwcp"
+
+[connection signal="power_off" from="PowerReceiver" to="." method="_on_power_receiver_power_off"]
+[connection signal="power_on" from="PowerReceiver" to="." method="_on_power_receiver_power_on"]

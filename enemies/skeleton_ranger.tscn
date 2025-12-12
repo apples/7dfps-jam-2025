@@ -1,0 +1,147 @@
+[gd_scene load_steps=20 format=3 uid="uid://dou3qwsi8otl0"]
+
+[ext_resource type="Script" uid="uid://ctn0biqnxxadm" path="res://enemies/skeleton.gd" id="1_mdiw3"]
+[ext_resource type="BehaviorTree" uid="uid://bcm1hhbee3eb7" path="res://enemies/skeleton_ranger_bt.tres" id="2_mdiw3"]
+[ext_resource type="PackedScene" uid="uid://c4bq0e3m2sfam" path="res://enemies/skeleton.blend" id="3_2oktm"]
+[ext_resource type="Script" uid="uid://dhtqq780o0e5m" path="res://hurtbox_area_3d.gd" id="4_3bl05"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_760x0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eq7ty"]
+radius = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdiw3"]
+resource_name = "Material"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.41000003, 0.41000003, 1)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_odbwd"]
+animation = &"idle-action"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7p486"]
+animation = &"ranger-attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eq7ty"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_odbwd"]
+fadein_time = 0.2
+fadeout_time = 0.2
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_yhifs"]
+fadein_time = 0.2
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_760x0"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fandg"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_a8xgm"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_760x0")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_fandg")
+blend_point_1/pos = 1.0
+min_space = 0.0
+value_label = "move_speed"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_2oktm"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_760x0"]
+nodes/output/position = Vector2(520, 0)
+nodes/AttackOneShot/node = SubResource("AnimationNodeOneShot_odbwd")
+nodes/AttackOneShot/position = Vector2(360, 0)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_eq7ty")
+nodes/Animation/position = Vector2(200, 120)
+nodes/IdleActionOneShot/node = SubResource("AnimationNodeOneShot_yhifs")
+nodes/IdleActionOneShot/position = Vector2(-400, 0)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_odbwd")
+"nodes/Animation 2/position" = Vector2(-560, 120)
+nodes/IdleRunBlendSpace/node = SubResource("AnimationNodeBlendSpace1D_a8xgm")
+nodes/IdleRunBlendSpace/position = Vector2(-760, 0)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_7p486")
+"nodes/Animation 3/position" = Vector2(-200, 120)
+nodes/RangerAttackOneShot/node = SubResource("AnimationNodeOneShot_2oktm")
+nodes/RangerAttackOneShot/position = Vector2(-20, 0)
+node_connections = [&"output", 0, &"AttackOneShot", &"AttackOneShot", 0, &"RangerAttackOneShot", &"AttackOneShot", 1, &"Animation", &"IdleActionOneShot", 0, &"IdleRunBlendSpace", &"IdleActionOneShot", 1, &"Animation 2", &"RangerAttackOneShot", 0, &"IdleActionOneShot", &"RangerAttackOneShot", 1, &"Animation 3"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_odbwd"]
+height = 10.0
+radius = 16.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fandg"]
+radius = 0.76190263
+
+[node name="SkeletonRanger" type="CharacterBody3D" groups=["enemy"]]
+script = ExtResource("1_mdiw3")
+
+[node name="BTPlayer" type="BTPlayer" parent="."]
+behavior_tree = ExtResource("2_mdiw3")
+update_mode = 2
+blackboard_plan = SubResource("BlackboardPlan_760x0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_eq7ty")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="RootMotionView" type="RootMotionView" parent="."]
+visible = false
+animation_path = NodePath("../AnimationTree")
+
+[node name="skeleton" parent="." instance=ExtResource("3_2oktm")]
+
+[node name="Cube" parent="skeleton/metarig/Skeleton3D" index="0"]
+material_override = SubResource("StandardMaterial3D_mdiw3")
+
+[node name="AnimationPlayer" parent="skeleton" index="1"]
+root_motion_track = NodePath("metarig/Skeleton3D:root")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../skeleton")
+root_motion_track = NodePath("metarig/Skeleton3D:root")
+tree_root = SubResource("AnimationNodeBlendTree_760x0")
+anim_player = NodePath("../skeleton/AnimationPlayer")
+parameters/AttackOneShot/active = false
+parameters/AttackOneShot/internal_active = false
+parameters/AttackOneShot/request = 0
+parameters/IdleActionOneShot/active = false
+parameters/IdleActionOneShot/internal_active = false
+parameters/IdleActionOneShot/request = 0
+parameters/IdleRunBlendSpace/blend_position = 0.0
+parameters/RangerAttackOneShot/active = false
+parameters/RangerAttackOneShot/internal_active = false
+parameters/RangerAttackOneShot/request = 0
+
+[node name="DetectionArea3D" type="Area3D" parent="."]
+input_ray_pickable = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("CylinderShape3D_odbwd")
+debug_color = Color(0.63401216, 0.52822036, 1.92523e-07, 0.41960785)
+
+[node name="HurtboxArea3D" type="Area3D" parent="."]
+script = ExtResource("4_3bl05")
+
+[node name="PunchShape" type="CollisionShape3D" parent="HurtboxArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1290236, 1.199386)
+shape = SubResource("SphereShape3D_fandg")
+disabled = true
+debug_color = Color(0.9978743, 0, 0.16647226, 0.41960785)
+
+[node name="VisionRayCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8617158, 0)
+enabled = false
+target_position = Vector3(0, 0, 1)
+
+[node name="FireboltMarker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5490967, 0.36947775)
+
+[connection signal="body_entered" from="DetectionArea3D" to="." method="_on_detection_area_3d_body_entered"]
+[connection signal="body_exited" from="DetectionArea3D" to="." method="_on_detection_area_3d_body_exited"]
+
+[editable path="skeleton"]

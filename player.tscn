@@ -444,22 +444,6 @@ tracks/0/keys = {
 "values": [Color(1, 0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_4flbx"]
-resource_name = "hurt"
-step = 0.0333333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FullscreenColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 0, 0, 0.27450982), Color(1, 0, 0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_2hs0m"]
 resource_name = "death"
 length = 0.5
@@ -475,6 +459,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 0, 0, 0.27450982), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4flbx"]
+resource_name = "hurt"
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullscreenColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.27450982), Color(1, 0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_1jxqw"]
@@ -504,8 +504,9 @@ _data = {
 }
 
 [node name="Player" groups=["player"] instance=ExtResource("1_4flbx")]
+collision_layer = 9
 script = ExtResource("2_onrkg")
-sprint_speed = 5.0
+sprint_speed = 15.0
 acceleration = 6.0
 default_reticle = null
 controls = {
@@ -577,3 +578,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+omni_range = 3.419
+omni_attenuation = 0.0

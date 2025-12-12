@@ -10,7 +10,7 @@ height = 1.475
 height = 1.0
 
 [sub_resource type="FogMaterial" id="FogMaterial_bjqgn"]
-density = -8.0
+density = -4.0
 
 [sub_resource type="Gradient" id="Gradient_atbmd"]
 colors = PackedColorArray(0, 0.30722076, 0.59314275, 0.49803922, 1, 1, 1, 1)

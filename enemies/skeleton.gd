@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 
 const SPEED = 5.0
+const FIREBOLT = preload("uid://ibo6d2umlxhy")
 
 var target: Node3D
 
@@ -9,6 +10,7 @@ var target: Node3D
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var vision_ray_cast: RayCast3D = $VisionRayCast
 @onready var bt_player: BTPlayer = $BTPlayer
+@onready var firebolt_marker_3d: Marker3D = get_node_or_null("FireboltMarker3D")
 
 func _physics_process(delta: float) -> void:
 	bt_player.update(delta)
@@ -41,6 +43,17 @@ func update_target() -> void:
 		navigation_agent.target_position = target.global_position
 	else:
 		bt_player.blackboard.set_var("target_in_sight", false)
+
+func shoot_bone() -> void:
+	if not target or not firebolt_marker_3d:
+		return
+	var target_vec := target.global_position - global_position
+	global_basis = Basis.looking_at(target_vec * Vector3(1, 0, 1), Vector3.UP, true)
+	var firebolt := FIREBOLT.instantiate() as Node3D
+	firebolt.position = get_parent().to_local(to_global(firebolt_marker_3d.position))
+	firebolt.velocity = target_vec.normalized() * 12.0
+	firebolt.caster = self
+	get_parent().add_child(firebolt)
 
 func _on_detection_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):

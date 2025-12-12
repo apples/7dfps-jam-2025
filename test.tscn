@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0aebpdwj301u"]
+[gd_scene load_steps=8 format=3 uid="uid://d0aebpdwj301u"]
 
 [ext_resource type="Script" uid="uid://y4lu4cwgpwtq" path="res://test.gd" id="1_ppyta"]
 [ext_resource type="PackedScene" uid="uid://bbr55tpw6565w" path="res://player.tscn" id="2_6uqi0"]
 [ext_resource type="PackedScene" uid="uid://ccu0wvhqnlyol" path="res://hud.tscn" id="2_g14j6"]
+[ext_resource type="PackedScene" uid="uid://3egcqgrh2uc3" path="res://level_2.tscn" id="2_ppyta"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_6uqi0"]
 
@@ -17,10 +18,11 @@ ssao_enabled = true
 glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.1
-volumetric_fog_emission = Color(0.42365062, 0.42365065, 0.42365062, 1)
+volumetric_fog_anisotropy = 0.0
 
 [node name="Test" type="Node3D"]
 script = ExtResource("1_ppyta")
+level_scene = ExtResource("2_ppyta")
 
 [node name="HudCanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3

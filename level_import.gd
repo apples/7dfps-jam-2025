@@ -9,7 +9,7 @@ func iterate(node):
 	if not node:
 		return
 	if node is StaticBody3D:
-		if node.get_parent().name == "Lava":
+		if node.get_parent().name.begins_with("Lava"):
 			var area := load("uid://ctnpx82800rjk").new() as Area3D
 			area.name = "LavaArea"
 			area.transform = node.transform

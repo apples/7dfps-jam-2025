@@ -1,0 +1,9 @@
+[gd_resource type="ORMMaterial3D" load_steps=3 format=3 uid="uid://b58tnjrqk6ouq"]
+
+[ext_resource type="Texture2D" uid="uid://elj3p8kkvqs3" path="res://materials/tiles_albedo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://cnptms4bbm8jh" path="res://materials/tiles_normal.png" id="3"]
+
+[resource]
+albedo_texture = ExtResource("1")
+normal_enabled = true
+normal_texture = ExtResource("3")

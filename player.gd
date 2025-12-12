@@ -67,8 +67,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("interact"):
 		if interact_ray_cast.is_colliding():
-			var interactable := interact_ray_cast.get_collider() as Interactable
-			if interactable:
+			var interactable := interact_ray_cast.get_collider()
+			if "interact" in interactable:
 				interactable.interact()
 	
 	if event.is_action_pressed("pause"):

@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var level_scene: PackedScene = preload("uid://dr4n2p5sy4dwt")
+@export var level_scene: PackedScene
 
 var level: Node3D
 
@@ -11,6 +11,12 @@ func _ready() -> void:
 	level = level_scene.instantiate()
 	add_child(level)
 	Globals.current_level_root = level
+	
+	var player_spawn_point := level.get_node_or_null("PlayerSpawnPoint") as Node3D
+	if player_spawn_point:
+		Globals.player.global_position = player_spawn_point.global_position
+		Globals.player.HEAD.global_rotation.y = player_spawn_point.global_rotation.y
+		Globals.player.status.respawn_point = player_spawn_point.global_position
 
 func _on_respawn_request() -> void:
 	level.queue_free()

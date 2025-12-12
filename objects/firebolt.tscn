@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=3 uid="uid://ibo6d2umlxhy"]
+
+[ext_resource type="Script" uid="uid://0b2kpaxtuc4o" path="res://objects/firebolt.gd" id="1_7lest"]
+[ext_resource type="ArrayMesh" uid="uid://bvinc4omgfqd6" path="res://enemies/skeleton_bone_SkeletonBone.res" id="2_p7b24"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jabpp"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_4najb"]
+material = SubResource("StandardMaterial3D_jabpp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7lest"]
+emission_shape = 2
+emission_sphere_radius = 0.25
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_p7b24"]
+offsets = PackedFloat32Array(0, 0.47878787, 1)
+colors = PackedColorArray(0.98721236, 0.7309865, 0, 1, 0.8531762, 0, 0.19096524, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_apewr"]
+gradient = SubResource("Gradient_p7b24")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04ndl"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_color = Color(1.3655106, 1.3655106, 1.3655106, 1)
+albedo_texture = SubResource("GradientTexture2D_apewr")
+
+[sub_resource type="QuadMesh" id="QuadMesh_xhfsc"]
+material = SubResource("StandardMaterial3D_04ndl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_apewr"]
+render_priority = 1
+transparency = 1
+cull_mode = 1
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.02
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhfsc"]
+resource_name = "Material"
+next_pass = SubResource("StandardMaterial3D_apewr")
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.930554, 0.8851539, 0.81277, 1)
+stencil_mode = 3
+stencil_flags = 2
+stencil_outline_thickness = 0.02
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7lest"]
+radius = 0.3
+
+[node name="Firebolt" type="Area3D"]
+script = ExtResource("1_7lest")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_4najb")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 16
+lifetime = 0.5
+draw_order = 3
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_7lest")
+draw_pass_1 = SubResource("QuadMesh_xhfsc")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
+
+[node name="Bone" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_xhfsc")
+mesh = ExtResource("2_p7b24")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_7lest")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

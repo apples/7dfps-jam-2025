@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhrrjxlodhgm4"]
+[gd_scene load_steps=6 format=3 uid="uid://bhrrjxlodhgm4"]
 
 [ext_resource type="Script" uid="uid://baed11rw1dgv3" path="res://objects/fan.gd" id="1_0p0dq"]
 [ext_resource type="PackedScene" uid="uid://dwhuwlodwpg1l" path="res://objects/fan.blend" id="1_soj78"]
+[ext_resource type="Script" uid="uid://ckl4f0tanlwcp" path="res://objects/power_receiver.gd" id="3_4ubsi"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4ubsi"]
-height = 7.0
+resource_local_to_scene = true
 radius = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4ubsi"]
 
 [node name="Fan" type="Area3D"]
 gravity_point_center = Vector3(0, 0, -1)
@@ -15,10 +18,25 @@ script = ExtResource("1_0p0dq")
 [node name="fan2" parent="." instance=ExtResource("1_soj78")]
 
 [node name="Skeleton3D" parent="fan2/Armature" index="0"]
-bones/2/position = Vector3(7, 1, -2.3841858e-07)
+bones/1/rotation = Quaternion(-0.17454019, -0.17454018, 0.68522686, -0.6852268)
+bones/2/position = Vector3(2.0080667, 1, -2.3841858e-07)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.0000001, 3.5)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.0000001, 1)
 shape = SubResource("CylinderShape3D_4ubsi")
+
+[node name="PowerReceiver" type="Node" parent="."]
+script = ExtResource("3_4ubsi")
+metadata/_custom_type_script = "uid://ckl4f0tanlwcp"
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+enabled = false
+shape = SubResource("SphereShape3D_4ubsi")
+target_position = Vector3(0, 0, 1.5)
+collision_mask = 4
+
+[connection signal="power_off" from="PowerReceiver" to="." method="_on_power_receiver_power_off"]
+[connection signal="power_on" from="PowerReceiver" to="." method="_on_power_receiver_power_on"]
 
 [editable path="fan2"]

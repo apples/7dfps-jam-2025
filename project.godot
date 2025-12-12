@@ -145,3 +145,9 @@ interact={
 
 3d_physics/layer_1="Default"
 3d_physics/layer_2="Interactables"
+3d_physics/layer_3="AirBlocker"
+3d_physics/layer_4="Player"
+
+[rendering]
+
+occlusion_culling/use_occlusion_culling=true

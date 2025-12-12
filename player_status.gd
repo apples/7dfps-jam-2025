@@ -11,3 +11,5 @@ class_name PlayerStatus
 @export var equipped_weapon: WeaponArchetype
 
 @export var respawn_point: Vector3
+
+@export var level_node_states: Dictionary[NodePath, Variant] = {}
