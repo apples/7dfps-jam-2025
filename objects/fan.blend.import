@@ -46,8 +46,8 @@ _subresources={
 },
 "WindMaterial": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://objects/fan_materials/WindMaterial.tres",
-"use_external/path": "uid://dchh7eywwf2tk"
+"use_external/fallback_path": "res://materials/wind.tres",
+"use_external/path": "uid://c6vi1m4noo8s3"
 }
 }
 }

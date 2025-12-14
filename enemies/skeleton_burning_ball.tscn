@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://b8j31e8ouvxe7"]
+
+[ext_resource type="Script" uid="uid://c6ya7tjeqrjt3" path="res://enemies/skeleton_burning_ball.gd" id="1_06i1r"]
+[ext_resource type="PackedScene" uid="uid://c4bq0e3m2sfam" path="res://enemies/skeleton.blend" id="1_46o8o"]
+[ext_resource type="AudioStream" uid="uid://bn6txgo4rja5i" path="res://sfx/tock.wav" id="3_tb236"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rcfpp"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7lest"]
+emission_shape = 2
+emission_sphere_radius = 0.25
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_p7b24"]
+offsets = PackedFloat32Array(0, 0.47878787, 1)
+colors = PackedColorArray(0.98721236, 0.7309865, 0, 1, 0.8531762, 0, 0.19096524, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_apewr"]
+gradient = SubResource("Gradient_p7b24")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04ndl"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_color = Color(1.3655106, 1.3655106, 1.3655106, 1)
+albedo_texture = SubResource("GradientTexture2D_apewr")
+
+[sub_resource type="QuadMesh" id="QuadMesh_xhfsc"]
+material = SubResource("StandardMaterial3D_04ndl")
+
+[node name="SkeletonBurningBall" type="Area3D"]
+script = ExtResource("1_06i1r")
+metadata/_custom_type_script = "uid://dhtqq780o0e5m"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+shape = SubResource("SphereShape3D_rcfpp")
+
+[node name="skeleton" parent="CollisionShape3D" instance=ExtResource("1_46o8o")]
+
+[node name="Skeleton3D" parent="CollisionShape3D/skeleton/metarig" index="0"]
+bones/1/position = Vector3(-4.012567e-18, -0.33638942, -0.19976796)
+bones/3/rotation = Quaternion(0.034235805, -1.1321605e-18, -2.4743561e-17, 0.99941385)
+bones/4/rotation = Quaternion(0.16053584, 1.065256e-18, -3.5273374e-17, 0.9870301)
+bones/6/rotation = Quaternion(0.22616291, -1.9668333e-17, -6.770988e-17, 0.97408956)
+bones/9/rotation = Quaternion(0.16603757, 0.16403583, -0.8088981, 0.5396366)
+bones/10/rotation = Quaternion(0.35523495, 0.04470145, -0.4522202, 0.8168886)
+bones/11/rotation = Quaternion(-0.025046712, -0.0035539148, -0.028186511, 0.99928254)
+bones/13/rotation = Quaternion(0.16603757, -0.16403583, 0.8088981, 0.5396366)
+bones/14/rotation = Quaternion(0.35523495, -0.044701464, 0.45222026, 0.8168885)
+bones/15/rotation = Quaternion(-0.025046712, 0.0035539174, 0.028186498, 0.99928254)
+bones/20/position = Vector3(0.09799999, 0.070818484, 0.02594226)
+bones/20/rotation = Quaternion(0.22092204, 2.0481533e-16, -1.8049074e-17, 0.97529143)
+bones/21/rotation = Quaternion(0.9452471, 2.258246e-18, 2.0272495e-16, 0.3263555)
+bones/21/scale = Vector3(1, 1.000014, 1.000014)
+bones/22/rotation = Quaternion(-0.5273639, -1.6528778e-25, 2.8513644e-25, 0.84963953)
+bones/25/position = Vector3(-0.09799999, 0.070818484, 0.02594226)
+bones/25/rotation = Quaternion(0.22092204, -2.0481533e-16, 1.8049074e-17, 0.97529143)
+bones/26/rotation = Quaternion(0.9452472, -2.2582378e-18, -2.0272495e-16, 0.32635543)
+bones/26/scale = Vector3(1, 1.0000142, 1.0000142)
+bones/27/rotation = Quaternion(-0.5273639, 4.0138546e-26, -1.313975e-25, 0.84963953)
+
+[node name="AnimationPlayer" parent="CollisionShape3D/skeleton" index="1"]
+active = false
+autoplay = "roll"
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="CollisionShape3D"]
+amount = 16
+lifetime = 0.5
+local_coords = true
+draw_order = 3
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_7lest")
+draw_pass_1 = SubResource("QuadMesh_xhfsc")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="CollisionShape3D"]
+stream = ExtResource("3_tb236")
+volume_db = -12.0
+autoplay = true
+max_distance = 6.0
+bus = &"SFX"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="hit_something" from="." to="." method="_on_hit_something"]
+[connection signal="finished" from="CollisionShape3D/AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="CollisionShape3D/skeleton"]

@@ -35,6 +35,13 @@ offset_bottom = 67.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Label" type="Label" parent="Buttons"]
+layout_mode = 2
+text = "The water goddess offers protection.
+
+"
+horizontal_alignment = 1
+
 [node name="Rest" type="MarginContainer" parent="Buttons"]
 layout_mode = 2
 mouse_filter = 0

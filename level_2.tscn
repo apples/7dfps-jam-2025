@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://3egcqgrh2uc3"]
+[gd_scene load_steps=23 format=3 uid="uid://3egcqgrh2uc3"]
 
 [ext_resource type="PackedScene" uid="uid://c26x5xjhv4kpo" path="res://levels/level2.blend" id="1_jg0dc"]
 [ext_resource type="PackedScene" uid="uid://dn6psaqqe4p13" path="res://objects/fountain.tscn" id="2_nmjpi"]
@@ -8,12 +8,17 @@
 [ext_resource type="PackedScene" uid="uid://bhrrjxlodhgm4" path="res://objects/fan.tscn" id="5_n7ypv"]
 [ext_resource type="Script" uid="uid://b7eouutdv5nh7" path="res://objects/spinner.gd" id="6_0s5r2"]
 [ext_resource type="PackedScene" uid="uid://8826iadsphwf" path="res://enemies/skeleton.tscn" id="7_7dov7"]
+[ext_resource type="AudioStream" uid="uid://bd2oficj0p48d" path="res://sfx/hairdryer.wav" id="8_5hnhx"]
 [ext_resource type="NavigationMesh" uid="uid://bjqvkr74ylmga" path="res://levels/level_2_navmesh.tres" id="8_ehv2h"]
+[ext_resource type="PackedScene" uid="uid://dlr17olwlxnjp" path="res://objects/power_sound.tscn" id="9_78pok"]
 [ext_resource type="PackedScene" uid="uid://dou3qwsi8otl0" path="res://enemies/skeleton_ranger.tscn" id="9_ehv2h"]
+[ext_resource type="AudioStream" uid="uid://cjqx48wgmrv6i" path="res://sfx/machine.wav" id="10_lvfll"]
 [ext_resource type="ArrayOccluder3D" uid="uid://b2lxnwt5pg7dd" path="res://levels/level_2.occ" id="11_eoq84"]
 [ext_resource type="PackedScene" uid="uid://7cc0ictoqxal" path="res://objects/multicast_receiver.tscn" id="11_yl73a"]
 [ext_resource type="FontFile" uid="uid://bmiu4bl4hnn1e" path="res://fonts/beholden/Beholden-Regular.ttf" id="13_xbcdb"]
 [ext_resource type="Script" uid="uid://mxbmin3qdn4y" path="res://objects/clock.gd" id="14_s77qv"]
+[ext_resource type="AudioStream" uid="uid://dvb5ju47e31nf" path="res://sfx/furnace.wav" id="18_jcnlr"]
+[ext_resource type="PackedScene" uid="uid://b8j31e8ouvxe7" path="res://enemies/skeleton_burning_ball.tscn" id="19_5kfcu"]
 
 [sub_resource type="FogMaterial" id="FogMaterial_eoq84"]
 emission = Color(1, 0, 0, 1)
@@ -29,7 +34,7 @@ edge_fade = 0.00041866163
 
 [node name="level2" groups=["navigation_mesh_source_group"] instance=ExtResource("1_jg0dc")]
 
-[node name="Plane_005" parent="." index="39"]
+[node name="Plane_005" parent="." index="38"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, -2, -80)
 
 [node name="Mover" type="Node" parent="Plane_005" index="1"]
@@ -157,49 +162,98 @@ light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D27" type="OmniLight3D" parent="." index="100"]
+[node name="OmniLight3D157" type="OmniLight3D" parent="." index="100"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.226812, 0.17103958, -80.23604)
+light_color = Color(1, 0.6333333, 0, 1)
+light_energy = 2.0
+light_specular = 0.2
+omni_attenuation = 0.0
+
+[node name="OmniLight3D158" type="OmniLight3D" parent="." index="101"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.826813, 0.17103958, -81.936035)
+light_color = Color(1, 0.6333333, 0, 1)
+light_energy = 2.0
+light_specular = 0.2
+omni_attenuation = 0.0
+
+[node name="OmniLight3D159" type="OmniLight3D" parent="." index="102"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.726812, 0.17103958, -83.73604)
+light_color = Color(1, 0.6333333, 0, 1)
+light_energy = 2.0
+light_specular = 0.2
+omni_attenuation = 0.0
+
+[node name="OmniLight3D160" type="OmniLight3D" parent="." index="103"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.726814, 0.17103958, -86.73604)
+light_color = Color(1, 0.6333333, 0, 1)
+light_energy = 2.0
+light_specular = 0.2
+omni_attenuation = 0.0
+
+[node name="OmniLight3D161" type="OmniLight3D" parent="." index="104"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.726814, 0.17103958, -83.73604)
+light_color = Color(1, 0.6333333, 0, 1)
+light_energy = 2.0
+light_specular = 0.2
+omni_attenuation = 0.0
+
+[node name="OmniLight3D162" type="OmniLight3D" parent="." index="105"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.726814, 0.17103958, -75.73604)
+light_color = Color(1, 0.6333333, 0, 1)
+light_energy = 2.0
+light_specular = 0.2
+omni_attenuation = 0.0
+
+[node name="OmniLight3D163" type="OmniLight3D" parent="." index="106"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.726814, 0.17103958, -73.73604)
+light_color = Color(1, 0.6333333, 0, 1)
+light_energy = 2.0
+light_specular = 0.2
+omni_attenuation = 0.0
+
+[node name="OmniLight3D27" type="OmniLight3D" parent="." index="107"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.273188, 0.17103958, -77.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D28" type="OmniLight3D" parent="." index="101"]
+[node name="OmniLight3D28" type="OmniLight3D" parent="." index="108"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.273188, 0.17103958, -80.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D29" type="OmniLight3D" parent="." index="102"]
+[node name="OmniLight3D29" type="OmniLight3D" parent="." index="109"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.273188, 0.17103958, -82.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D30" type="OmniLight3D" parent="." index="103"]
+[node name="OmniLight3D30" type="OmniLight3D" parent="." index="110"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.273188, 0.17103958, -83.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D130" type="OmniLight3D" parent="." index="104"]
+[node name="OmniLight3D130" type="OmniLight3D" parent="." index="111"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27318764, 0.17103958, -91.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D131" type="OmniLight3D" parent="." index="105"]
+[node name="OmniLight3D131" type="OmniLight3D" parent="." index="112"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27318764, 0.17103958, -99.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D132" type="OmniLight3D" parent="." index="106"]
+[node name="OmniLight3D132" type="OmniLight3D" parent="." index="113"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27318764, 0.17103958, -108.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
@@ -212,1071 +266,1071 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30000043, 2, 1)
 size = Vector3(16.2, 6, 14)
 material = SubResource("FogMaterial_eoq84")
 
-[node name="OmniLight3D31" type="OmniLight3D" parent="." index="107"]
+[node name="OmniLight3D31" type="OmniLight3D" parent="." index="114"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.273188, 0.17103958, -85.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D32" type="OmniLight3D" parent="." index="108"]
+[node name="OmniLight3D32" type="OmniLight3D" parent="." index="115"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.273188, 0.17103958, -87.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D33" type="OmniLight3D" parent="." index="109"]
+[node name="OmniLight3D33" type="OmniLight3D" parent="." index="116"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.273188, 0.17103958, -90.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D34" type="OmniLight3D" parent="." index="110"]
+[node name="OmniLight3D34" type="OmniLight3D" parent="." index="117"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.273188, 0.17103958, -92.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D35" type="OmniLight3D" parent="." index="111"]
+[node name="OmniLight3D35" type="OmniLight3D" parent="." index="118"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.273188, 0.17103958, -96.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D36" type="OmniLight3D" parent="." index="112"]
+[node name="OmniLight3D36" type="OmniLight3D" parent="." index="119"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.273188, 0.17103958, -99.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D" type="OmniLight3D" parent="." index="113"]
+[node name="BigOmniLight3D" type="OmniLight3D" parent="." index="120"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.273186, 2.1710396, -79.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D2" type="OmniLight3D" parent="." index="114"]
+[node name="BigOmniLight3D2" type="OmniLight3D" parent="." index="121"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.273186, 2.1710396, -79.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D3" type="OmniLight3D" parent="." index="115"]
+[node name="BigOmniLight3D3" type="OmniLight3D" parent="." index="122"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.273186, 2.1710396, -79.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D4" type="OmniLight3D" parent="." index="116"]
+[node name="BigOmniLight3D4" type="OmniLight3D" parent="." index="123"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.273186, 2.1710396, -77.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D5" type="OmniLight3D" parent="." index="117"]
+[node name="BigOmniLight3D5" type="OmniLight3D" parent="." index="124"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.273186, 2.1710396, -82.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D6" type="OmniLight3D" parent="." index="118"]
+[node name="BigOmniLight3D6" type="OmniLight3D" parent="." index="125"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.273186, 2.1710396, -87.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D7" type="OmniLight3D" parent="." index="119"]
+[node name="BigOmniLight3D7" type="OmniLight3D" parent="." index="126"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.273186, 2.1710396, -91.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D8" type="OmniLight3D" parent="." index="120"]
+[node name="BigOmniLight3D8" type="OmniLight3D" parent="." index="127"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.273186, 2.1710396, -91.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D9" type="OmniLight3D" parent="." index="121"]
+[node name="BigOmniLight3D9" type="OmniLight3D" parent="." index="128"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.273186, 2.1710396, -94.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D10" type="OmniLight3D" parent="." index="122"]
+[node name="BigOmniLight3D10" type="OmniLight3D" parent="." index="129"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.273186, 2.1710396, -101.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D11" type="OmniLight3D" parent="." index="123"]
+[node name="BigOmniLight3D11" type="OmniLight3D" parent="." index="130"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.273186, 2.1710396, -108.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D12" type="OmniLight3D" parent="." index="124"]
+[node name="BigOmniLight3D12" type="OmniLight3D" parent="." index="131"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.273186, 2.1710396, -111.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D13" type="OmniLight3D" parent="." index="125"]
+[node name="BigOmniLight3D13" type="OmniLight3D" parent="." index="132"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.273186, 2.1710396, -107.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D14" type="OmniLight3D" parent="." index="126"]
+[node name="BigOmniLight3D14" type="OmniLight3D" parent="." index="133"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.273186, 2.1710396, -105.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D15" type="OmniLight3D" parent="." index="127"]
+[node name="BigOmniLight3D15" type="OmniLight3D" parent="." index="134"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.273186, 2.1710396, -111.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D16" type="OmniLight3D" parent="." index="128"]
+[node name="BigOmniLight3D16" type="OmniLight3D" parent="." index="135"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.273186, 2.1710396, -113.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D17" type="OmniLight3D" parent="." index="129"]
+[node name="BigOmniLight3D17" type="OmniLight3D" parent="." index="136"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.273186, 2.1710396, -100.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D18" type="OmniLight3D" parent="." index="130"]
+[node name="BigOmniLight3D18" type="OmniLight3D" parent="." index="137"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.273186, 2.1710396, -90.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D19" type="OmniLight3D" parent="." index="131"]
+[node name="BigOmniLight3D19" type="OmniLight3D" parent="." index="138"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.273186, 2.1710396, -78.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D20" type="OmniLight3D" parent="." index="132"]
+[node name="BigOmniLight3D20" type="OmniLight3D" parent="." index="139"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.273186, 2.1710396, -79.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D21" type="OmniLight3D" parent="." index="133"]
+[node name="BigOmniLight3D21" type="OmniLight3D" parent="." index="140"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.273186, 2.1710396, -92.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D23" type="OmniLight3D" parent="." index="134"]
+[node name="BigOmniLight3D23" type="OmniLight3D" parent="." index="141"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.273186, 2.1710396, -101.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D24" type="OmniLight3D" parent="." index="135"]
+[node name="BigOmniLight3D24" type="OmniLight3D" parent="." index="142"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.273186, 2.1710396, -80.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 12.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D22" type="OmniLight3D" parent="." index="136"]
+[node name="BigOmniLight3D22" type="OmniLight3D" parent="." index="143"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.273186, 2.1710396, -112.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D27" type="OmniLight3D" parent="." index="137"]
+[node name="BigOmniLight3D27" type="OmniLight3D" parent="." index="144"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27318573, 33.17104, -111.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D28" type="OmniLight3D" parent="." index="138"]
+[node name="BigOmniLight3D28" type="OmniLight3D" parent="." index="145"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27318573, 33.17104, -131.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D31" type="OmniLight3D" parent="." index="139"]
+[node name="BigOmniLight3D31" type="OmniLight3D" parent="." index="146"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27318573, 33.17104, -159.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D32" type="OmniLight3D" parent="." index="140"]
+[node name="BigOmniLight3D32" type="OmniLight3D" parent="." index="147"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.273186, 33.17104, -156.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D33" type="OmniLight3D" parent="." index="141"]
+[node name="BigOmniLight3D33" type="OmniLight3D" parent="." index="148"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.726814, 33.17104, -155.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D34" type="OmniLight3D" parent="." index="142"]
+[node name="BigOmniLight3D34" type="OmniLight3D" parent="." index="149"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.726814, 33.17104, -133.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D35" type="OmniLight3D" parent="." index="143"]
+[node name="BigOmniLight3D35" type="OmniLight3D" parent="." index="150"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.273186, 33.17104, -134.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D29" type="OmniLight3D" parent="." index="144"]
+[node name="BigOmniLight3D29" type="OmniLight3D" parent="." index="151"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.273186, 33.17104, -143.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D30" type="OmniLight3D" parent="." index="145"]
+[node name="BigOmniLight3D30" type="OmniLight3D" parent="." index="152"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.726814, 33.17104, -143.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D25" type="OmniLight3D" parent="." index="146"]
+[node name="BigOmniLight3D25" type="OmniLight3D" parent="." index="153"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.726814, 2.1710396, -112.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="BigOmniLight3D26" type="OmniLight3D" parent="." index="147"]
+[node name="BigOmniLight3D26" type="OmniLight3D" parent="." index="154"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.726814, 2.1710396, -101.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 omni_range = 14.0
 omni_attenuation = 0.0
 
-[node name="OmniLight3D37" type="OmniLight3D" parent="." index="148"]
+[node name="OmniLight3D37" type="OmniLight3D" parent="." index="155"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.273188, 0.17103958, -99.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D38" type="OmniLight3D" parent="." index="149"]
+[node name="OmniLight3D38" type="OmniLight3D" parent="." index="156"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.273188, 0.17103958, -102.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D39" type="OmniLight3D" parent="." index="150"]
+[node name="OmniLight3D39" type="OmniLight3D" parent="." index="157"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.273188, 0.17103958, -105.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D40" type="OmniLight3D" parent="." index="151"]
+[node name="OmniLight3D40" type="OmniLight3D" parent="." index="158"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.273188, 0.17103958, -108.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D41" type="OmniLight3D" parent="." index="152"]
+[node name="OmniLight3D41" type="OmniLight3D" parent="." index="159"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.273188, 0.17103958, -111.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D42" type="OmniLight3D" parent="." index="153"]
+[node name="OmniLight3D42" type="OmniLight3D" parent="." index="160"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.273188, 0.17103958, -113.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D43" type="OmniLight3D" parent="." index="154"]
+[node name="OmniLight3D43" type="OmniLight3D" parent="." index="161"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.273188, 0.17103958, -117.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D44" type="OmniLight3D" parent="." index="155"]
+[node name="OmniLight3D44" type="OmniLight3D" parent="." index="162"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.273188, 0.17103958, -117.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D45" type="OmniLight3D" parent="." index="156"]
+[node name="OmniLight3D45" type="OmniLight3D" parent="." index="163"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.273188, 0.17103958, -117.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D46" type="OmniLight3D" parent="." index="157"]
+[node name="OmniLight3D46" type="OmniLight3D" parent="." index="164"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.273188, 0.17103958, -117.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D47" type="OmniLight3D" parent="." index="158"]
+[node name="OmniLight3D47" type="OmniLight3D" parent="." index="165"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.273188, 0.17103958, -117.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D48" type="OmniLight3D" parent="." index="159"]
+[node name="OmniLight3D48" type="OmniLight3D" parent="." index="166"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.273188, 0.17103958, -117.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D49" type="OmniLight3D" parent="." index="160"]
+[node name="OmniLight3D49" type="OmniLight3D" parent="." index="167"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.273186, 0.17103958, -117.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D50" type="OmniLight3D" parent="." index="161"]
+[node name="OmniLight3D50" type="OmniLight3D" parent="." index="168"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.273186, 0.17103958, -117.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D51" type="OmniLight3D" parent="." index="162"]
+[node name="OmniLight3D51" type="OmniLight3D" parent="." index="169"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.273186, 0.17103958, -117.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D52" type="OmniLight3D" parent="." index="163"]
+[node name="OmniLight3D52" type="OmniLight3D" parent="." index="170"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.273186, 0.17103958, -117.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D53" type="OmniLight3D" parent="." index="164"]
+[node name="OmniLight3D53" type="OmniLight3D" parent="." index="171"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.273186, 0.17103958, -117.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D54" type="OmniLight3D" parent="." index="165"]
+[node name="OmniLight3D54" type="OmniLight3D" parent="." index="172"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.273186, 0.17103958, -117.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D55" type="OmniLight3D" parent="." index="166"]
+[node name="OmniLight3D55" type="OmniLight3D" parent="." index="173"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.273186, 0.17103958, -117.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D56" type="OmniLight3D" parent="." index="167"]
+[node name="OmniLight3D56" type="OmniLight3D" parent="." index="174"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.273186, 0.17103958, -117.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D57" type="OmniLight3D" parent="." index="168"]
+[node name="OmniLight3D57" type="OmniLight3D" parent="." index="175"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.273186, 0.17103958, -117.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D58" type="OmniLight3D" parent="." index="169"]
+[node name="OmniLight3D58" type="OmniLight3D" parent="." index="176"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.273186, 0.17103958, -117.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D59" type="OmniLight3D" parent="." index="170"]
+[node name="OmniLight3D59" type="OmniLight3D" parent="." index="177"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.273186, 0.17103958, -117.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D60" type="OmniLight3D" parent="." index="171"]
+[node name="OmniLight3D60" type="OmniLight3D" parent="." index="178"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.273186, 0.17103958, -117.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D61" type="OmniLight3D" parent="." index="172"]
+[node name="OmniLight3D61" type="OmniLight3D" parent="." index="179"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.273186, 0.17103958, -115.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D62" type="OmniLight3D" parent="." index="173"]
+[node name="OmniLight3D62" type="OmniLight3D" parent="." index="180"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.273186, 0.17103958, -111.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D63" type="OmniLight3D" parent="." index="174"]
+[node name="OmniLight3D63" type="OmniLight3D" parent="." index="181"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.273186, 0.17103958, -109.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D64" type="OmniLight3D" parent="." index="175"]
+[node name="OmniLight3D64" type="OmniLight3D" parent="." index="182"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.273186, 0.17103958, -107.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D65" type="OmniLight3D" parent="." index="176"]
+[node name="OmniLight3D65" type="OmniLight3D" parent="." index="183"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.273186, 0.17103958, -105.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D66" type="OmniLight3D" parent="." index="177"]
+[node name="OmniLight3D66" type="OmniLight3D" parent="." index="184"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.273186, 0.17103958, -105.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D67" type="OmniLight3D" parent="." index="178"]
+[node name="OmniLight3D67" type="OmniLight3D" parent="." index="185"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.273186, 0.17103958, -105.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D68" type="OmniLight3D" parent="." index="179"]
+[node name="OmniLight3D68" type="OmniLight3D" parent="." index="186"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.273186, 0.17103958, -102.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D69" type="OmniLight3D" parent="." index="180"]
+[node name="OmniLight3D69" type="OmniLight3D" parent="." index="187"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.273186, 0.17103958, -98.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D70" type="OmniLight3D" parent="." index="181"]
+[node name="OmniLight3D70" type="OmniLight3D" parent="." index="188"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.273186, 0.17103958, -95.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D71" type="OmniLight3D" parent="." index="182"]
+[node name="OmniLight3D71" type="OmniLight3D" parent="." index="189"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.273186, 0.17103958, -92.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D72" type="OmniLight3D" parent="." index="183"]
+[node name="OmniLight3D72" type="OmniLight3D" parent="." index="190"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.273186, 0.17103958, -89.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D73" type="OmniLight3D" parent="." index="184"]
+[node name="OmniLight3D73" type="OmniLight3D" parent="." index="191"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.273186, 0.17103958, -86.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D74" type="OmniLight3D" parent="." index="185"]
+[node name="OmniLight3D74" type="OmniLight3D" parent="." index="192"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.273186, 0.17103958, -82.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D75" type="OmniLight3D" parent="." index="186"]
+[node name="OmniLight3D75" type="OmniLight3D" parent="." index="193"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.273186, 0.17103958, -79.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D76" type="OmniLight3D" parent="." index="187"]
+[node name="OmniLight3D76" type="OmniLight3D" parent="." index="194"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.273186, 0.17103958, -76.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D77" type="OmniLight3D" parent="." index="188"]
+[node name="OmniLight3D77" type="OmniLight3D" parent="." index="195"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.273186, 0.17103958, -73.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D78" type="OmniLight3D" parent="." index="189"]
+[node name="OmniLight3D78" type="OmniLight3D" parent="." index="196"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.273186, 0.17103958, -73.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D79" type="OmniLight3D" parent="." index="190"]
+[node name="OmniLight3D79" type="OmniLight3D" parent="." index="197"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.273186, 0.17103958, -73.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D80" type="OmniLight3D" parent="." index="191"]
+[node name="OmniLight3D80" type="OmniLight3D" parent="." index="198"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.273186, 0.17103958, -73.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D81" type="OmniLight3D" parent="." index="192"]
+[node name="OmniLight3D81" type="OmniLight3D" parent="." index="199"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.273186, 0.17103958, -73.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D82" type="OmniLight3D" parent="." index="193"]
+[node name="OmniLight3D82" type="OmniLight3D" parent="." index="200"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.273186, 0.17103958, -73.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D83" type="OmniLight3D" parent="." index="194"]
+[node name="OmniLight3D83" type="OmniLight3D" parent="." index="201"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.273186, 0.17103958, -73.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D84" type="OmniLight3D" parent="." index="195"]
+[node name="OmniLight3D84" type="OmniLight3D" parent="." index="202"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.273186, 0.17103958, -73.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D85" type="OmniLight3D" parent="." index="196"]
+[node name="OmniLight3D85" type="OmniLight3D" parent="." index="203"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.273186, 0.17103958, -73.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D86" type="OmniLight3D" parent="." index="197"]
+[node name="OmniLight3D86" type="OmniLight3D" parent="." index="204"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.273186, 0.17103958, -73.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D87" type="OmniLight3D" parent="." index="198"]
+[node name="OmniLight3D87" type="OmniLight3D" parent="." index="205"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.273186, 0.17103958, -73.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D88" type="OmniLight3D" parent="." index="199"]
+[node name="OmniLight3D88" type="OmniLight3D" parent="." index="206"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.273186, 0.17103958, -73.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D89" type="OmniLight3D" parent="." index="200"]
+[node name="OmniLight3D89" type="OmniLight3D" parent="." index="207"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.273186, 0.17103958, -73.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D90" type="OmniLight3D" parent="." index="201"]
+[node name="OmniLight3D90" type="OmniLight3D" parent="." index="208"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.273186, 0.17103958, -73.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D91" type="OmniLight3D" parent="." index="202"]
+[node name="OmniLight3D91" type="OmniLight3D" parent="." index="209"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.273186, 0.17103958, -73.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D92" type="OmniLight3D" parent="." index="203"]
+[node name="OmniLight3D92" type="OmniLight3D" parent="." index="210"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.273186, 0.17103958, -73.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D93" type="OmniLight3D" parent="." index="204"]
+[node name="OmniLight3D93" type="OmniLight3D" parent="." index="211"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.273186, 0.17103958, -78.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D94" type="OmniLight3D" parent="." index="205"]
+[node name="OmniLight3D94" type="OmniLight3D" parent="." index="212"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.273186, 0.17103958, -83.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D95" type="OmniLight3D" parent="." index="206"]
+[node name="OmniLight3D95" type="OmniLight3D" parent="." index="213"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.273186, 0.17103958, -91.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D96" type="OmniLight3D" parent="." index="207"]
+[node name="OmniLight3D96" type="OmniLight3D" parent="." index="214"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.273186, 0.17103958, -97.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D97" type="OmniLight3D" parent="." index="208"]
+[node name="OmniLight3D97" type="OmniLight3D" parent="." index="215"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.273186, 0.17103958, -102.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D133" type="OmniLight3D" parent="." index="209"]
+[node name="OmniLight3D133" type="OmniLight3D" parent="." index="216"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7268124, 29.17104, -137.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D135" type="OmniLight3D" parent="." index="210"]
+[node name="OmniLight3D135" type="OmniLight3D" parent="." index="217"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.726812, 29.17104, -137.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D136" type="OmniLight3D" parent="." index="211"]
+[node name="OmniLight3D136" type="OmniLight3D" parent="." index="218"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.726812, 29.17104, -137.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D137" type="OmniLight3D" parent="." index="212"]
+[node name="OmniLight3D137" type="OmniLight3D" parent="." index="219"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.726812, 29.17104, -144.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D138" type="OmniLight3D" parent="." index="213"]
+[node name="OmniLight3D138" type="OmniLight3D" parent="." index="220"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2731876, 29.17104, -146.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D139" type="OmniLight3D" parent="." index="214"]
+[node name="OmniLight3D139" type="OmniLight3D" parent="." index="221"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7268124, 29.17104, -144.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D140" type="OmniLight3D" parent="." index="215"]
+[node name="OmniLight3D140" type="OmniLight3D" parent="." index="222"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2731876, 29.17104, -137.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D141" type="OmniLight3D" parent="." index="216"]
+[node name="OmniLight3D141" type="OmniLight3D" parent="." index="223"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.273188, 29.17104, -137.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D153" type="OmniLight3D" parent="." index="217"]
+[node name="OmniLight3D153" type="OmniLight3D" parent="." index="224"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7268124, 29.17104, -150.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D154" type="OmniLight3D" parent="." index="218"]
+[node name="OmniLight3D154" type="OmniLight3D" parent="." index="225"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.726812, 29.17104, -150.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D155" type="OmniLight3D" parent="." index="219"]
+[node name="OmniLight3D155" type="OmniLight3D" parent="." index="226"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2731876, 29.17104, -150.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D156" type="OmniLight3D" parent="." index="220"]
+[node name="OmniLight3D156" type="OmniLight3D" parent="." index="227"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.273188, 29.17104, -150.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D142" type="OmniLight3D" parent="." index="221"]
+[node name="OmniLight3D142" type="OmniLight3D" parent="." index="228"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.273188, 29.17104, -139.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D143" type="OmniLight3D" parent="." index="222"]
+[node name="OmniLight3D143" type="OmniLight3D" parent="." index="229"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.273188, 29.17104, -138.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D144" type="OmniLight3D" parent="." index="223"]
+[node name="OmniLight3D144" type="OmniLight3D" parent="." index="230"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.273188, 29.17104, -141.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D145" type="OmniLight3D" parent="." index="224"]
+[node name="OmniLight3D145" type="OmniLight3D" parent="." index="231"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.273188, 29.17104, -144.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D146" type="OmniLight3D" parent="." index="225"]
+[node name="OmniLight3D146" type="OmniLight3D" parent="." index="232"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.273188, 29.17104, -147.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D147" type="OmniLight3D" parent="." index="226"]
+[node name="OmniLight3D147" type="OmniLight3D" parent="." index="233"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.273188, 29.17104, -150.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D148" type="OmniLight3D" parent="." index="227"]
+[node name="OmniLight3D148" type="OmniLight3D" parent="." index="234"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.726812, 29.17104, -138.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D149" type="OmniLight3D" parent="." index="228"]
+[node name="OmniLight3D149" type="OmniLight3D" parent="." index="235"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.726812, 29.17104, -141.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D150" type="OmniLight3D" parent="." index="229"]
+[node name="OmniLight3D150" type="OmniLight3D" parent="." index="236"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.726812, 29.17104, -144.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D151" type="OmniLight3D" parent="." index="230"]
+[node name="OmniLight3D151" type="OmniLight3D" parent="." index="237"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.726812, 29.17104, -147.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D152" type="OmniLight3D" parent="." index="231"]
+[node name="OmniLight3D152" type="OmniLight3D" parent="." index="238"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.726812, 29.17104, -150.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D134" type="OmniLight3D" parent="." index="232"]
+[node name="OmniLight3D134" type="OmniLight3D" parent="." index="239"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27318573, 31.17104, -140.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D98" type="OmniLight3D" parent="." index="233"]
+[node name="OmniLight3D98" type="OmniLight3D" parent="." index="240"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.273186, 0.17103958, -107.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D99" type="OmniLight3D" parent="." index="234"]
+[node name="OmniLight3D99" type="OmniLight3D" parent="." index="241"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.273186, 0.17103958, -113.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D100" type="OmniLight3D" parent="." index="235"]
+[node name="OmniLight3D100" type="OmniLight3D" parent="." index="242"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.273186, 0.17103958, -114.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D101" type="OmniLight3D" parent="." index="236"]
+[node name="OmniLight3D101" type="OmniLight3D" parent="." index="243"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.273186, 0.17103958, -100.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D102" type="OmniLight3D" parent="." index="237"]
+[node name="OmniLight3D102" type="OmniLight3D" parent="." index="244"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.273186, 0.17103958, -96.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D103" type="OmniLight3D" parent="." index="238"]
+[node name="OmniLight3D103" type="OmniLight3D" parent="." index="245"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.273186, 0.17103958, -106.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D104" type="OmniLight3D" parent="." index="239"]
+[node name="OmniLight3D104" type="OmniLight3D" parent="." index="246"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.273186, 0.17103958, -95.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D105" type="OmniLight3D" parent="." index="240"]
+[node name="OmniLight3D105" type="OmniLight3D" parent="." index="247"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.273186, 0.17103958, -103.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D106" type="OmniLight3D" parent="." index="241"]
+[node name="OmniLight3D106" type="OmniLight3D" parent="." index="248"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.273186, 0.17103958, -95.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D107" type="OmniLight3D" parent="." index="242"]
+[node name="OmniLight3D107" type="OmniLight3D" parent="." index="249"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.273186, 0.17103958, -95.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D108" type="OmniLight3D" parent="." index="243"]
+[node name="OmniLight3D108" type="OmniLight3D" parent="." index="250"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.273186, 0.17103958, -100.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D109" type="OmniLight3D" parent="." index="244"]
+[node name="OmniLight3D109" type="OmniLight3D" parent="." index="251"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.273186, 0.17103958, -104.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D110" type="OmniLight3D" parent="." index="245"]
+[node name="OmniLight3D110" type="OmniLight3D" parent="." index="252"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.273186, 0.17103958, -112.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D111" type="OmniLight3D" parent="." index="246"]
+[node name="OmniLight3D111" type="OmniLight3D" parent="." index="253"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.273186, 0.17103958, -112.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D112" type="OmniLight3D" parent="." index="247"]
+[node name="OmniLight3D112" type="OmniLight3D" parent="." index="254"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.273186, 0.17103958, -93.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D113" type="OmniLight3D" parent="." index="248"]
+[node name="OmniLight3D113" type="OmniLight3D" parent="." index="255"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.273186, 0.17103958, -91.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D128" type="OmniLight3D" parent="." index="249"]
+[node name="OmniLight3D128" type="OmniLight3D" parent="." index="256"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.273186, 0.17103958, -94.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D129" type="OmniLight3D" parent="." index="250"]
+[node name="OmniLight3D129" type="OmniLight3D" parent="." index="257"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.273186, 0.17103958, -97.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D114" type="OmniLight3D" parent="." index="251"]
+[node name="OmniLight3D114" type="OmniLight3D" parent="." index="258"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.273186, 0.17103958, -86.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D115" type="OmniLight3D" parent="." index="252"]
+[node name="OmniLight3D115" type="OmniLight3D" parent="." index="259"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.273186, 0.17103958, -79.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D116" type="OmniLight3D" parent="." index="253"]
+[node name="OmniLight3D116" type="OmniLight3D" parent="." index="260"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.273186, 0.17103958, -84.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D117" type="OmniLight3D" parent="." index="254"]
+[node name="OmniLight3D117" type="OmniLight3D" parent="." index="261"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.273186, 0.17103958, -85.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D118" type="OmniLight3D" parent="." index="255"]
+[node name="OmniLight3D118" type="OmniLight3D" parent="." index="262"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.273186, 0.17103958, -82.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D119" type="OmniLight3D" parent="." index="256"]
+[node name="OmniLight3D119" type="OmniLight3D" parent="." index="263"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.273186, 0.17103958, -89.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D120" type="OmniLight3D" parent="." index="257"]
+[node name="OmniLight3D120" type="OmniLight3D" parent="." index="264"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.273186, 0.17103958, -89.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D121" type="OmniLight3D" parent="." index="258"]
+[node name="OmniLight3D121" type="OmniLight3D" parent="." index="265"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.273186, 0.17103958, -89.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D12" type="OmniLight3D" parent="." index="259"]
+[node name="OmniLight3D12" type="OmniLight3D" parent="." index="266"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2731881, 0.17103958, -66.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
@@ -1284,7 +1338,7 @@ light_specular = 0.2
 omni_range = 6.0
 omni_attenuation = 0.0
 
-[node name="OmniLight3D13" type="OmniLight3D" parent="." index="260"]
+[node name="OmniLight3D13" type="OmniLight3D" parent="." index="267"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.273188, 0.17103958, -62.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
@@ -1292,7 +1346,7 @@ light_specular = 0.2
 omni_range = 6.0
 omni_attenuation = 0.0
 
-[node name="OmniLight3D14" type="OmniLight3D" parent="." index="261"]
+[node name="OmniLight3D14" type="OmniLight3D" parent="." index="268"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.273188, 0.17103958, -64.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
@@ -1300,7 +1354,7 @@ light_specular = 0.2
 omni_range = 7.0
 omni_attenuation = 0.0
 
-[node name="OmniLight3D15" type="OmniLight3D" parent="." index="262"]
+[node name="OmniLight3D15" type="OmniLight3D" parent="." index="269"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.726812, 0.17103958, -62.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
@@ -1308,7 +1362,7 @@ light_specular = 0.2
 omni_range = 6.0
 omni_attenuation = 0.0
 
-[node name="OmniLight3D16" type="OmniLight3D" parent="." index="263"]
+[node name="OmniLight3D16" type="OmniLight3D" parent="." index="270"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.726812, 0.17103958, -62.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
@@ -1316,7 +1370,7 @@ light_specular = 0.2
 omni_range = 6.0
 omni_attenuation = 0.0
 
-[node name="OmniLight3D17" type="OmniLight3D" parent="." index="264"]
+[node name="OmniLight3D17" type="OmniLight3D" parent="." index="271"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.726812, 0.17103958, -64.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
@@ -1324,14 +1378,14 @@ light_specular = 0.2
 omni_range = 6.0
 omni_attenuation = 0.0
 
-[node name="OmniLight3D18" type="OmniLight3D" parent="." index="265"]
+[node name="OmniLight3D18" type="OmniLight3D" parent="." index="272"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.726812, 0.17103958, -67.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D19" type="OmniLight3D" parent="." index="266"]
+[node name="OmniLight3D19" type="OmniLight3D" parent="." index="273"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.726812, 0.17103958, -64.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
@@ -1339,7 +1393,7 @@ light_specular = 0.2
 omni_range = 7.0
 omni_attenuation = 0.0
 
-[node name="OmniLight3D20" type="OmniLight3D" parent="." index="267"]
+[node name="OmniLight3D20" type="OmniLight3D" parent="." index="274"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.273188, 0.17103958, -62.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
@@ -1347,7 +1401,7 @@ light_specular = 0.2
 omni_range = 6.0
 omni_attenuation = 0.0
 
-[node name="OmniLight3D21" type="OmniLight3D" parent="." index="268"]
+[node name="OmniLight3D21" type="OmniLight3D" parent="." index="275"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.273188, 0.17103958, -62.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
@@ -1355,7 +1409,7 @@ light_specular = 0.2
 omni_range = 6.0
 omni_attenuation = 0.0
 
-[node name="OmniLight3D23" type="OmniLight3D" parent="." index="269"]
+[node name="OmniLight3D23" type="OmniLight3D" parent="." index="276"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.273188, 0.17103958, -64.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
@@ -1363,27 +1417,27 @@ light_specular = 0.2
 omni_range = 6.0
 omni_attenuation = 0.0
 
-[node name="OmniLight3D24" type="OmniLight3D" parent="." index="270"]
+[node name="OmniLight3D24" type="OmniLight3D" parent="." index="277"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.273188, 0.17103958, -67.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="OmniLight3D22" type="OmniLight3D" parent="." index="271"]
+[node name="OmniLight3D22" type="OmniLight3D" parent="." index="278"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.273188, 0.17103958, -67.73604)
 light_color = Color(1, 0.6333333, 0, 1)
 light_energy = 2.0
 light_specular = 0.2
 omni_attenuation = 0.0
 
-[node name="FogVolume" type="FogVolume" parent="." index="272"]
+[node name="FogVolume" type="FogVolume" parent="." index="279"]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -44, 0.9999999, -117.5)
 size = Vector3(6, 73, 6)
 shape = 2
 material = SubResource("FogMaterial_nmjpi")
 
-[node name="Gate" parent="." index="273" instance=ExtResource("3_1y8me")]
+[node name="Gate" parent="." index="280" instance=ExtResource("3_1y8me")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -53)
 
 [node name="lever" parent="Gate" index="4" node_paths=PackedStringArray("target") instance=ExtResource("4_n7ypv")]
@@ -1391,7 +1445,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
 target = NodePath("..")
 save_state = true
 
-[node name="Gate2" parent="." index="274" instance=ExtResource("3_1y8me")]
+[node name="Gate2" parent="." index="281" instance=ExtResource("3_1y8me")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -72)
 
 [node name="lever2" parent="Gate2" index="4" node_paths=PackedStringArray("target") instance=ExtResource("4_n7ypv")]
@@ -1399,7 +1453,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
 target = NodePath("..")
 save_state = true
 
-[node name="Gate9" parent="." index="275" instance=ExtResource("3_1y8me")]
+[node name="Gate9" parent="." index="282" instance=ExtResource("3_1y8me")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -104)
 
 [node name="lever2" parent="Gate9" index="4" node_paths=PackedStringArray("target") instance=ExtResource("4_n7ypv")]
@@ -1407,7 +1461,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
 target = NodePath("..")
 save_state = true
 
-[node name="Gate3" parent="." index="276" instance=ExtResource("3_1y8me")]
+[node name="Gate3" parent="." index="283" instance=ExtResource("3_1y8me")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8, 0, -80)
 
 [node name="lever2" parent="Gate3" index="4" node_paths=PackedStringArray("target") instance=ExtResource("4_n7ypv")]
@@ -1415,7 +1469,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
 target = NodePath("..")
 save_state = true
 
-[node name="Gate4" parent="." index="277" instance=ExtResource("3_1y8me")]
+[node name="Gate4" parent="." index="284" instance=ExtResource("3_1y8me")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 8, 0, -80)
 
 [node name="lever2" parent="Gate4" index="4" node_paths=PackedStringArray("target") instance=ExtResource("4_n7ypv")]
@@ -1423,7 +1477,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
 target = NodePath("..")
 save_state = true
 
-[node name="Gate6" parent="." index="278" instance=ExtResource("3_1y8me")]
+[node name="Gate6" parent="." index="285" instance=ExtResource("3_1y8me")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 24, 0, -75)
 
 [node name="lever2" parent="Gate6" index="4" node_paths=PackedStringArray("target") instance=ExtResource("4_n7ypv")]
@@ -1431,7 +1485,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13,
 target = NodePath("..")
 save_state = true
 
-[node name="Gate7" parent="." index="279" instance=ExtResource("3_1y8me")]
+[node name="Gate7" parent="." index="286" instance=ExtResource("3_1y8me")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 40, 0, -85)
 
 [node name="lever2" parent="Gate7" index="4" node_paths=PackedStringArray("target") instance=ExtResource("4_n7ypv")]
@@ -1443,54 +1497,54 @@ save_state = true
 transform = Transform3D(-4.3711385e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 0, 6, 0, -8)
 length = 3.0
 
-[node name="Gate5" parent="." index="280" instance=ExtResource("3_1y8me")]
+[node name="Gate5" parent="." index="287" instance=ExtResource("3_1y8me")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7683716e-07, 0, -88)
 
-[node name="OmniLight3D122" type="OmniLight3D" parent="." index="281"]
+[node name="OmniLight3D122" type="OmniLight3D" parent="." index="288"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 5.0132294, -80)
 light_color = Color(0.9999997, 0.9334008, 0.9009609, 1)
 shadow_enabled = true
 omni_range = 9.0
 omni_attenuation = 0.0
 
-[node name="OmniLight3D124" type="OmniLight3D" parent="." index="282"]
+[node name="OmniLight3D124" type="OmniLight3D" parent="." index="289"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3.0132294, -80)
 light_color = Color(0.9999997, 0.9334008, 0.9009609, 1)
 omni_range = 9.0
 omni_attenuation = 0.0
 
-[node name="OmniLight3D123" type="OmniLight3D" parent="." index="283"]
+[node name="OmniLight3D123" type="OmniLight3D" parent="." index="290"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 5.0132294, -80)
 light_color = Color(0.9999997, 0.9334008, 0.9009609, 1)
 shadow_enabled = true
 omni_range = 9.0
 omni_attenuation = 0.0
 
-[node name="OmniLight3D125" type="OmniLight3D" parent="." index="284"]
+[node name="OmniLight3D125" type="OmniLight3D" parent="." index="291"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 3.0132294, -80)
 light_color = Color(0.9999997, 0.9334008, 0.9009609, 1)
 omni_range = 9.0
 omni_attenuation = 0.0
 
-[node name="OmniLight3D126" type="OmniLight3D" parent="." index="285"]
+[node name="OmniLight3D126" type="OmniLight3D" parent="." index="292"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 5.0132294, -80)
 light_color = Color(0.9999997, 0.9334008, 0.9009609, 1)
 shadow_enabled = true
 omni_range = 9.0
 omni_attenuation = 0.0
 
-[node name="OmniLight3D127" type="OmniLight3D" parent="." index="286"]
+[node name="OmniLight3D127" type="OmniLight3D" parent="." index="293"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 3.0132294, -80)
 light_color = Color(0.9999997, 0.9334008, 0.9009609, 1)
 omni_range = 9.0
 omni_attenuation = 0.0
 
-[node name="Fan" parent="." index="287" instance=ExtResource("5_n7ypv")]
+[node name="Fan" parent="." index="294" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(-8.709011e-08, 0.84523654, -1.8126155, -7.619397e-09, 1.8126155, 0.84523654, 2, 4.371139e-08, -7.5710346e-08, -16, -3.8, -80)
 wind_speed = 15.0
 length = 3.13
 
-[node name="Spinner" type="Node3D" parent="." index="288"]
+[node name="Spinner" type="Node3D" parent="." index="295"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.8, 0, -84.299995)
 script = ExtResource("6_0s5r2")
 angular_speed = -2.0
@@ -1499,102 +1553,119 @@ metadata/_custom_type_script = "uid://b7eouutdv5nh7"
 [node name="Fan2" parent="Spinner" index="0" instance=ExtResource("5_n7ypv")]
 length = 6.5
 
-[node name="Fan2" parent="." index="289" instance=ExtResource("5_n7ypv")]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Spinner" index="1"]
+stream = ExtResource("8_5hnhx")
+pitch_scale = 0.1
+autoplay = true
+max_distance = 13.0
+
+[node name="PowerSound" parent="." index="296" instance=ExtResource("9_78pok")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79, 2, -111)
+visible = false
+stream = ExtResource("10_lvfll")
+attenuation_model = 3
+max_db = -8.0
+max_distance = 15.0
+bus = &"SFX"
+
+[node name="Fan2" parent="." index="297" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(-4.3378083e-08, -0.08715575, 0.9961947, -3.8096983e-09, 0.9961947, 0.08715575, -1, -1.4551915e-11, -4.3545054e-08, -73.82569, -2.2923894, -73.299995)
 wind_speed = 60.0
 length = 120.0
 active_when_powered = true
 
-[node name="lever2" parent="." index="290" node_paths=PackedStringArray("target") instance=ExtResource("4_n7ypv")]
+[node name="lever2" parent="." index="298" node_paths=PackedStringArray("target") instance=ExtResource("4_n7ypv")]
 transform = Transform3D(-1, 0, -8.7422784e-08, 0, 1.0000002, 0, 8.742278e-08, 0, -1.0000001, -74.05244, 0.2975099, -72.299995)
 target = NodePath("../Fan2")
 save_state = true
 
-[node name="Skeleton" parent="." index="291" instance=ExtResource("7_7dov7")]
+[node name="Skeleton" parent="." index="299" instance=ExtResource("7_7dov7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -51)
 
-[node name="Skeleton2" parent="." index="292" instance=ExtResource("7_7dov7")]
+[node name="Skeleton2" parent="." index="300" instance=ExtResource("7_7dov7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -70)
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." index="293"]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." index="301"]
 navigation_mesh = ExtResource("8_ehv2h")
 
-[node name="SkeletonRanger" parent="." index="294" instance=ExtResource("9_ehv2h")]
+[node name="SkeletonRanger" parent="." index="302" instance=ExtResource("9_ehv2h")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -51, 0, -79)
 
-[node name="SkeletonRanger3" parent="." index="295" instance=ExtResource("9_ehv2h")]
+[node name="SkeletonRanger3" parent="." index="303" instance=ExtResource("9_ehv2h")]
 transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, -39.7, 0, -109.5)
 
-[node name="Skeleton6" parent="." index="296" instance=ExtResource("7_7dov7")]
+[node name="Skeleton6" parent="." index="304" instance=ExtResource("7_7dov7")]
 transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, -53, 0, -103)
 
-[node name="Skeleton7" parent="." index="297" instance=ExtResource("7_7dov7")]
+[node name="Skeleton7" parent="." index="305" instance=ExtResource("7_7dov7")]
 transform = Transform3D(-0.49999997, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.49999997, -56, 0, -106)
 
-[node name="SkeletonRanger2" parent="." index="298" instance=ExtResource("9_ehv2h")]
+[node name="SkeletonRanger2" parent="." index="306" instance=ExtResource("9_ehv2h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -114)
 
-[node name="Skeleton3" parent="." index="299" instance=ExtResource("7_7dov7")]
+[node name="Skeleton3" parent="." index="307" instance=ExtResource("7_7dov7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -112)
 
-[node name="Skeleton4" parent="." index="300" instance=ExtResource("7_7dov7")]
+[node name="Skeleton4" parent="." index="308" instance=ExtResource("7_7dov7")]
 transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -31, 0, -112)
 
-[node name="Skeleton5" parent="." index="301" instance=ExtResource("7_7dov7")]
+[node name="Skeleton5" parent="." index="309" instance=ExtResource("7_7dov7")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -32, 0, -92)
 
-[node name="Fan3" parent="." index="302" instance=ExtResource("5_n7ypv")]
+[node name="Fan3" parent="." index="310" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -6, -1, -61.5)
 wind_speed = 20.0
+attenuation = 1.0
 
-[node name="Fan4" parent="." index="303" instance=ExtResource("5_n7ypv")]
+[node name="Fan4" parent="." index="311" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5, -1, -61.5)
 wind_speed = 20.0
+attenuation = 1.0
 
-[node name="SkeletonRanger4" parent="." index="304" instance=ExtResource("9_ehv2h")]
+[node name="SkeletonRanger4" parent="." index="312" instance=ExtResource("9_ehv2h")]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 17, 2, -83)
 
-[node name="Skeleton8" parent="." index="305" instance=ExtResource("7_7dov7")]
+[node name="Skeleton8" parent="." index="313" instance=ExtResource("7_7dov7")]
 transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 9, 0, -87)
 
-[node name="Skeleton9" parent="." index="306" instance=ExtResource("7_7dov7")]
+[node name="Skeleton9" parent="." index="314" instance=ExtResource("7_7dov7")]
 transform = Transform3D(-0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, -0.7071067, 23.142136, 0, -73)
 
-[node name="Skeleton10" parent="." index="307" instance=ExtResource("7_7dov7")]
+[node name="Skeleton10" parent="." index="315" instance=ExtResource("7_7dov7")]
 transform = Transform3D(-0.25881907, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, -0.25881907, 39, 0, -74)
 
-[node name="Skeleton12" parent="." index="308" instance=ExtResource("7_7dov7")]
+[node name="Skeleton12" parent="." index="316" instance=ExtResource("7_7dov7")]
 transform = Transform3D(0.7071068, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.7071068, 39.46687, 0, -86.90923)
 
-[node name="SkeletonRanger5" parent="." index="309" instance=ExtResource("9_ehv2h")]
+[node name="SkeletonRanger5" parent="." index="317" instance=ExtResource("9_ehv2h")]
 transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, 50, 3, -87)
 
-[node name="SkeletonRanger6" parent="." index="310" instance=ExtResource("9_ehv2h")]
+[node name="SkeletonRanger6" parent="." index="318" instance=ExtResource("9_ehv2h")]
 transform = Transform3D(-0.5000001, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, -0.5000001, 50, 3, -73)
 
-[node name="Skeleton11" parent="." index="311" instance=ExtResource("7_7dov7")]
+[node name="Skeleton11" parent="." index="319" instance=ExtResource("7_7dov7")]
 transform = Transform3D(-0.9659257, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, -0.9659257, 45, 0, -76)
 
-[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="316"]
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="324"]
 visible = false
 occluder = ExtResource("11_eoq84")
 
-[node name="Fan5" parent="." index="322" instance=ExtResource("5_n7ypv")]
+[node name="Fan5" parent="." index="330" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 50, 0, -85)
 length = 24.0
 active_when_powered = true
 
-[node name="Fan6" parent="." index="323" instance=ExtResource("5_n7ypv")]
+[node name="Fan6" parent="." index="331" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -90)
 length = 14.0
 active_when_powered = true
 
-[node name="Fan7" parent="." index="324" instance=ExtResource("5_n7ypv")]
+[node name="Fan7" parent="." index="332" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 40, 0, -75)
 length = 30.0
 active_when_powered = true
 
-[node name="lever3" parent="." index="325" node_paths=PackedStringArray("target") instance=ExtResource("4_n7ypv")]
+[node name="lever3" parent="." index="333" node_paths=PackedStringArray("target") instance=ExtResource("4_n7ypv")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 55.8, 4, -80)
 target = NodePath("MulticastReceiver")
 save_state = true
@@ -1604,33 +1675,33 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.3
 skeleton = NodePath("../..")
 targets = [NodePath("../../Fan5"), NodePath("../../Fan6"), NodePath("../../Fan7"), NodePath("../../Gate5")]
 
-[node name="lever4" parent="." index="326" node_paths=PackedStringArray("target") instance=ExtResource("4_n7ypv")]
+[node name="lever4" parent="." index="334" node_paths=PackedStringArray("target") instance=ExtResource("4_n7ypv")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -79.8, 1, -117)
 target = NodePath("MulticastReceiver")
 save_state = true
 
 [node name="MulticastReceiver" parent="lever4" index="6" node_paths=PackedStringArray("targets") instance=ExtResource("11_yl73a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
-targets = [NodePath("../../Plane_005/Mover"), NodePath("../../Gate8")]
+targets = [NodePath("../../Plane_005/Mover"), NodePath("../../Gate8"), NodePath("../../PowerSound")]
 
-[node name="FogVolume" type="FogVolume" parent="Lava_001_001" index="1"]
+[node name="_FogVolume_28693" type="FogVolume" parent="Lava_005" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.75, 0)
 size = Vector3(55, 4.5, 31)
 material = SubResource("FogMaterial_s77qv")
 
-[node name="Fan8" parent="." index="355" instance=ExtResource("5_n7ypv")]
+[node name="Fan8" parent="." index="362" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, -111)
 length = 30.0
 active_when_powered = true
 
-[node name="lever" parent="." index="356" node_paths=PackedStringArray("target") instance=ExtResource("4_n7ypv")]
+[node name="lever" parent="." index="363" node_paths=PackedStringArray("target") instance=ExtResource("4_n7ypv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -114.3)
 target = NodePath("../Fan8")
 
-[node name="Gate8" parent="." index="357" instance=ExtResource("3_1y8me")]
+[node name="Gate8" parent="." index="364" instance=ExtResource("3_1y8me")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -96)
 
-[node name="lever5" parent="." index="358" instance=ExtResource("4_n7ypv")]
+[node name="lever5" parent="." index="365" instance=ExtResource("4_n7ypv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, -167.8)
 
 [node name="Label3D" type="Label3D" parent="lever5" index="6"]
@@ -1640,60 +1711,142 @@ text = "If you flip this lever,
 you win!"
 font = ExtResource("13_xbcdb")
 
-[node name="Fan9" parent="." index="359" instance=ExtResource("5_n7ypv")]
+[node name="Fan9" parent="." index="366" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23.7, 29, -140.3)
 length = 12.0
+active_when_powered = true
 
 [node name="Clock" type="Node" parent="Fan9" index="4" node_paths=PackedStringArray("target")]
 script = ExtResource("14_s77qv")
 target = NodePath("..")
+time_off = 1.5
 metadata/_custom_type_script = "uid://mxbmin3qdn4y"
 
-[node name="Fan11" parent="." index="360" instance=ExtResource("5_n7ypv")]
+[node name="Fan11" parent="." index="367" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 23.699999, 29, -144)
 length = 12.0
+active_when_powered = true
 
 [node name="Clock" type="Node" parent="Fan11" index="4" node_paths=PackedStringArray("target")]
 script = ExtResource("14_s77qv")
 target = NodePath("..")
+time_off = 1.5
 metadata/_custom_type_script = "uid://mxbmin3qdn4y"
 
-[node name="Fan10" parent="." index="361" instance=ExtResource("5_n7ypv")]
+[node name="Fan10" parent="." index="368" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23.7, 29, -147)
 length = 12.0
+active_when_powered = true
 
 [node name="Clock" type="Node" parent="Fan10" index="4" node_paths=PackedStringArray("target")]
 script = ExtResource("14_s77qv")
 target = NodePath("..")
-start_time = 1.0
+time_off = 1.5
+start_time = 1.25
 metadata/_custom_type_script = "uid://mxbmin3qdn4y"
 
-[node name="SkeletonRanger7" parent="." index="362" instance=ExtResource("9_ehv2h")]
+[node name="SkeletonRanger7" parent="." index="369" instance=ExtResource("9_ehv2h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 29, -153)
 
-[node name="SkeletonRanger8" parent="." index="363" instance=ExtResource("9_ehv2h")]
+[node name="SkeletonRanger8" parent="." index="370" instance=ExtResource("9_ehv2h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 29, -153)
 
-[node name="Skeleton13" parent="." index="364" instance=ExtResource("7_7dov7")]
+[node name="Skeleton13" parent="." index="371" instance=ExtResource("7_7dov7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 29, -137)
 
-[node name="Skeleton14" parent="." index="365" instance=ExtResource("7_7dov7")]
+[node name="Skeleton14" parent="." index="372" instance=ExtResource("7_7dov7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 29, -136)
 
-[node name="Skeleton15" parent="." index="366" instance=ExtResource("7_7dov7")]
-transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, -9, 29, -122)
+[node name="Skeleton15" parent="." index="373" instance=ExtResource("7_7dov7")]
+transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, -8.133975, 29, -122.5)
 
-[node name="SkeletonRanger9" parent="." index="367" instance=ExtResource("9_ehv2h")]
+[node name="SkeletonRanger9" parent="." index="374" instance=ExtResource("9_ehv2h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 29, -167)
 
-[node name="Skeleton16" parent="." index="368" instance=ExtResource("7_7dov7")]
+[node name="Skeleton16" parent="." index="375" instance=ExtResource("7_7dov7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 29, -161)
 
-[node name="Skeleton17" parent="." index="369" instance=ExtResource("7_7dov7")]
+[node name="Skeleton17" parent="." index="376" instance=ExtResource("7_7dov7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 29, -160)
 
-[node name="Skeleton18" parent="." index="370" instance=ExtResource("7_7dov7")]
+[node name="Skeleton18" parent="." index="377" instance=ExtResource("7_7dov7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 29, -134)
 
-[node name="Skeleton19" parent="." index="371" instance=ExtResource("7_7dov7")]
+[node name="Skeleton19" parent="." index="378" instance=ExtResource("7_7dov7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 29, -134)
+
+[node name="Fan12" parent="." index="382" instance=ExtResource("5_n7ypv")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -28.700003, -1.0999993, -98.7)
+wind_speed = 20.0
+length = 3.0
+attenuation = 0.2
+
+[node name="Fan17" parent="." index="383" instance=ExtResource("5_n7ypv")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -38.100002, -1.0999999, -112.6)
+wind_speed = 20.0
+length = 3.0
+attenuation = 0.2
+
+[node name="Fan14" parent="." index="384" instance=ExtResource("5_n7ypv")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -57.800003, -1.0999998, -109.5)
+wind_speed = 20.0
+length = 3.0
+attenuation = 0.2
+
+[node name="Fan15" parent="." index="385" instance=ExtResource("5_n7ypv")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -60.600002, -1.0999999, -111.5)
+wind_speed = 20.0
+length = 3.0
+attenuation = 0.2
+
+[node name="Fan16" parent="." index="386" instance=ExtResource("5_n7ypv")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -64.3, -1.0999999, -110.4)
+wind_speed = 20.0
+length = 3.0
+attenuation = 0.2
+
+[node name="Fan13" parent="." index="387" instance=ExtResource("5_n7ypv")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -43.9, -1.0999998, -109.299995)
+wind_speed = 20.0
+length = 3.0
+attenuation = 0.2
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="388"]
+transform = Transform3D(-0.99999994, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -0.99999994, -12, 1, -124)
+stream = ExtResource("18_jcnlr")
+volume_db = -7.55
+pitch_scale = 0.05
+autoplay = true
+max_distance = 20.0
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="." index="389"]
+transform = Transform3D(-0.99999994, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -0.99999994, 36, 1, -94.00001)
+stream = ExtResource("18_jcnlr")
+volume_db = -7.55
+pitch_scale = 0.05
+autoplay = true
+max_distance = 20.0
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="." index="390"]
+transform = Transform3D(-0.99999994, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -0.99999994, 15.000006, 1, -52.00001)
+stream = ExtResource("18_jcnlr")
+volume_db = -7.55
+pitch_scale = 0.05
+autoplay = true
+max_distance = 20.0
+
+[node name="FogVolume2" type="FogVolume" parent="." index="391"]
+
+[node name="SkeletonBurningBall" parent="." index="392" instance=ExtResource("19_5kfcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, -4, -92)
+speed = 1.5
+
+[node name="SkeletonBurningBall2" parent="." index="393" instance=ExtResource("19_5kfcu")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -43, -4, -92)
+speed = 1.5
+skip_time = 0.5
+
+[node name="SkeletonBurningBall3" parent="." index="394" instance=ExtResource("19_5kfcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, -4, -92)
+speed = 1.5
+skip_time = 1.0

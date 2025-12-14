@@ -3,7 +3,10 @@ extends Node
 var _sfx_players: Array[AudioStreamPlayer]
 var _sfx_players_3d: Array[AudioStreamPlayer3D]
 
-func play_sfx(stream: AudioStream) -> void:
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
+func play_sfx(stream: AudioStream, volume_linear: float = 1.0, pitch_scale: float = 1.0) -> void:
 	var player: AudioStreamPlayer
 	for p in _sfx_players:
 		if not p.playing:
@@ -15,6 +18,8 @@ func play_sfx(stream: AudioStream) -> void:
 		_sfx_players.append(player)
 		add_child(player)
 	player.stream = stream
+	player.volume_linear = volume_linear
+	player.pitch_scale = pitch_scale
 	player.play()
 
 func play_sfx_3d(stream: AudioStream, global_position: Vector3) -> void:

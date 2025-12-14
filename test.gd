@@ -1,5 +1,7 @@
 extends Node3D
 
+const TUTORIAL = preload("uid://7sepke55ouvv")
+
 @export var level_scene: PackedScene
 
 var level: Node3D
@@ -17,6 +19,11 @@ func _ready() -> void:
 		Globals.player.global_position = player_spawn_point.global_position
 		Globals.player.HEAD.global_rotation.y = player_spawn_point.global_rotation.y
 		Globals.player.status.respawn_point = player_spawn_point.global_position
+	
+	if not Globals.tutorial_shown:
+		Globals.tutorial_shown = true
+		var menu = TUTORIAL.instantiate()
+		Globals.menu_canvas_layer.add_child(menu)
 
 func _on_respawn_request() -> void:
 	level.queue_free()

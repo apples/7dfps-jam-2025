@@ -5,6 +5,14 @@ signal respawn_request()
 const PAUSE_MENU = preload("uid://deabhxcs4fsqn")
 const OOF = preload("uid://cau7886fgih4k")
 
+const FOOTSTEPS = [
+	preload("uid://gvaxs1s02pma"),
+	preload("uid://bkm4xv4y7sdhe"),
+	preload("uid://b0tljmmb50he5"),
+	preload("uid://c7e4i46q6gf7i"),
+	preload("uid://dqc6nl7m6yboy"),
+]
+
 var status: PlayerStatus = PlayerStatus.new()
 
 var stamina_accum: float = 0.0
@@ -19,6 +27,7 @@ var invulnerable: bool = false
 @onready var weapon_animations: AnimationPlayer = $WeaponAnimations
 @onready var interact_ray_cast: RayCast3D = %InteractRayCast
 @onready var weapon_marker: Marker3D = %WeaponMarker
+@onready var footstep_audio_stream_player: AudioStreamPlayer = $FootstepAudioStreamPlayer
 
 func _enter_tree() -> void:
 	Globals.player = self
@@ -74,6 +83,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		var menu = PAUSE_MENU.instantiate()
 		Globals.menu_canvas_layer.add_child(menu)
+	
+	if OS.is_debug_build():
+		if event is InputEventKey:
+			if event.pressed and event.keycode == KEY_HOME:
+				position = Vector3(0, 1, -108)
 
 func equip_weapon(weapon: WeaponArchetype) -> void:
 	status.equipped_weapon = weapon
@@ -87,10 +101,9 @@ func hurt() -> void:
 		return
 	player_ui_animation_player.play("hurt")
 	status.current_hp -= 10
+	AudioManager.play_sfx(OOF)
 	if status.current_hp <= 0:
 		die()
-	else:
-		AudioManager.play_sfx(OOF)
 
 func rest() -> void:
 	player_ui_animation_player.play("wake")
@@ -116,3 +129,7 @@ func die() -> void:
 	velocity = Vector3.ZERO
 	wind_velocity = Vector3.ZERO
 	set_physics_process(true)
+
+
+func _on_footstep() -> void:
+	AudioManager.play_sfx(FOOTSTEPS.pick_random(), 0.2, 1.2)

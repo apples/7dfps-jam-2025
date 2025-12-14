@@ -1,8 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhrrjxlodhgm4"]
+[gd_scene load_steps=12 format=3 uid="uid://bhrrjxlodhgm4"]
 
 [ext_resource type="Script" uid="uid://baed11rw1dgv3" path="res://objects/fan.gd" id="1_0p0dq"]
 [ext_resource type="PackedScene" uid="uid://dwhuwlodwpg1l" path="res://objects/fan.blend" id="1_soj78"]
 [ext_resource type="Script" uid="uid://ckl4f0tanlwcp" path="res://objects/power_receiver.gd" id="3_4ubsi"]
+[ext_resource type="Shader" uid="uid://dhvmgmk18eqlt" path="res://materials/wind.gdshader" id="3_8rl7o"]
+[ext_resource type="Texture2D" uid="uid://bvj0mduw0q240" path="res://materials/wind_texture_1.png" id="4_6hbu3"]
+[ext_resource type="AudioStream" uid="uid://wjwor32u4aie" path="res://sfx/wind.wav" id="4_q8qua"]
+[ext_resource type="AudioStream" uid="uid://cp8t60icfcddh" path="res://sfx/fan.wav" id="5_gxgkn"]
+[ext_resource type="Texture2D" uid="uid://c38f7bcry6qgv" path="res://materials/wind_texture_2.png" id="5_mbs14"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qr7rq"]
+render_priority = -1
+shader = ExtResource("3_8rl7o")
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/depth_min_layers = 8
+shader_parameter/depth_max_layers = 16
+shader_parameter/depth_flip = Vector2(1, 1)
+shader_parameter/variation = 0.0
+shader_parameter/texture_1 = ExtResource("4_6hbu3")
+shader_parameter/texture_2 = ExtResource("5_mbs14")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4ubsi"]
 resource_local_to_scene = true
@@ -17,9 +34,8 @@ script = ExtResource("1_0p0dq")
 
 [node name="fan2" parent="." instance=ExtResource("1_soj78")]
 
-[node name="Skeleton3D" parent="fan2/Armature" index="0"]
-bones/1/rotation = Quaternion(-0.17454019, -0.17454018, 0.68522686, -0.6852268)
-bones/2/position = Vector3(2.0080667, 1, -2.3841858e-07)
+[node name="Fan_001" parent="fan2/Armature/Skeleton3D" index="1"]
+material_override = SubResource("ShaderMaterial_qr7rq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.0000001, 1)
@@ -35,6 +51,24 @@ enabled = false
 shape = SubResource("SphereShape3D_4ubsi")
 target_position = Vector3(0, 0, 1.5)
 collision_mask = 4
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+stream = ExtResource("4_q8qua")
+attenuation_model = 1
+unit_size = 2.0
+max_db = 2.0
+autoplay = true
+max_distance = 10.0
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+stream = ExtResource("5_gxgkn")
+volume_db = -8.0
+autoplay = true
+max_distance = 10.0
+bus = &"SFX"
 
 [connection signal="power_off" from="PowerReceiver" to="." method="_on_power_receiver_power_off"]
 [connection signal="power_on" from="PowerReceiver" to="." method="_on_power_receiver_power_on"]

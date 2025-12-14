@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dlr17olwlxnjp"]
+
+[ext_resource type="Script" uid="uid://cs864oick4gxk" path="res://objects/power_sound.gd" id="1_pfmfu"]
+[ext_resource type="Script" uid="uid://ckl4f0tanlwcp" path="res://objects/power_receiver.gd" id="2_qp2mq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qp2mq"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0.9000001, 1, 1)
+grow = true
+grow_amount = 0.03
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6gb6y"]
+next_pass = SubResource("StandardMaterial3D_qp2mq")
+shading_mode = 0
+stencil_mode = 1
+stencil_flags = 2
+stencil_color = Color(0, 0.9000001, 1, 1)
+stencil_outline_thickness = 0.03
+
+[sub_resource type="BoxMesh" id="BoxMesh_opfr1"]
+material = SubResource("StandardMaterial3D_6gb6y")
+
+[node name="PowerSound" type="AudioStreamPlayer3D"]
+script = ExtResource("1_pfmfu")
+
+[node name="PowerReceiver" type="Node" parent="."]
+script = ExtResource("2_qp2mq")
+metadata/_custom_type_script = "uid://ckl4f0tanlwcp"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 2
+mesh = SubResource("BoxMesh_opfr1")
+
+[connection signal="power_off" from="PowerReceiver" to="." method="_on_power_receiver_power_off"]
+[connection signal="power_on" from="PowerReceiver" to="." method="_on_power_receiver_power_on"]

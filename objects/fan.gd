@@ -8,7 +8,7 @@ const FAN_ROTATION_SPEED = 2.0 * TAU
 	set(v):
 		length = v
 		_update_state()
-
+@export var attenuation: float = 0.0
 @export var active_when_powered: bool = false
 
 var fan_rotation: float
@@ -24,6 +24,11 @@ var powered: bool = false:
 @onready var wind_end_bone: int = skeleton_3d.find_bone("windEnd")
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var shape_cast_3d: ShapeCast3D = $ShapeCast3D
+
+@onready var audio_stream_players: Array[AudioStreamPlayer3D] = [
+	$AudioStreamPlayer3D,
+	$AudioStreamPlayer3D2,
+]
 
 func _ready() -> void:
 	_update_state()
@@ -41,7 +46,11 @@ func _process(delta: float) -> void:
 	
 	for body in get_overlapping_bodies():
 		if "wind_velocity" in body:
-			body.wind_velocity += global_basis.z * wind_speed
+			var wind_vel := global_basis.z * wind_speed
+			var d := body.global_position - global_position
+			d = d.project(global_basis.z)
+			var df := 1.0 - clampf(d.length() / length, 0.0, 1.0)
+			body.wind_velocity += global_basis.z * wind_speed * pow(df, attenuation)
 
 func _update_state() -> void:
 	if not is_inside_tree():
@@ -66,6 +75,11 @@ func _update_state() -> void:
 	collision_shape_3d.position.z = actual_length / 2.0
 	collision_shape_3d.disabled = not active
 	
+	for asp in audio_stream_players:
+		if active and not asp.playing:
+			asp.play()
+		elif not active and asp.playing:
+			asp.stop()
 
 func _on_power_receiver_power_off() -> void:
 	powered = false

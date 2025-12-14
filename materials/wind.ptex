@@ -1,0 +1,627 @@
+{
+	"connections": [
+		{
+			"from": "splines",
+			"from_port": 0,
+			"to": "shear",
+			"to_port": 0
+		},
+		{
+			"from": "colorize_2",
+			"from_port": 0,
+			"to": "translate",
+			"to_port": 0
+		},
+		{
+			"from": "translate",
+			"from_port": 0,
+			"to": "blend2",
+			"to_port": 0
+		},
+		{
+			"from": "colorize",
+			"from_port": 0,
+			"to": "decompose_2",
+			"to_port": 0
+		},
+		{
+			"from": "decompose_2",
+			"from_port": 0,
+			"to": "combine",
+			"to_port": 0
+		},
+		{
+			"from": "decompose_2",
+			"from_port": 1,
+			"to": "combine",
+			"to_port": 1
+		},
+		{
+			"from": "decompose_2",
+			"from_port": 2,
+			"to": "combine",
+			"to_port": 2
+		},
+		{
+			"from": "gradient",
+			"from_port": 0,
+			"to": "decompose_3",
+			"to_port": 0
+		},
+		{
+			"from": "decompose_3",
+			"from_port": 3,
+			"to": "math",
+			"to_port": 1
+		},
+		{
+			"from": "decompose_2",
+			"from_port": 3,
+			"to": "math",
+			"to_port": 0
+		},
+		{
+			"from": "math",
+			"from_port": 0,
+			"to": "combine",
+			"to_port": 3
+		},
+		{
+			"from": "decompose_4",
+			"from_port": 0,
+			"to": "combine_2",
+			"to_port": 0
+		},
+		{
+			"from": "decompose_4",
+			"from_port": 1,
+			"to": "combine_2",
+			"to_port": 1
+		},
+		{
+			"from": "decompose_4",
+			"from_port": 2,
+			"to": "combine_2",
+			"to_port": 2
+		},
+		{
+			"from": "combine_2",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 0
+		},
+		{
+			"from": "decompose_4",
+			"from_port": 3,
+			"to": "Material",
+			"to_port": 7
+		},
+		{
+			"from": "blend2",
+			"from_port": 0,
+			"to": "transform2",
+			"to_port": 0
+		},
+		{
+			"from": "transform2",
+			"from_port": 0,
+			"to": "decompose_4",
+			"to_port": 0
+		},
+		{
+			"from": "shear",
+			"from_port": 0,
+			"to": "fast_blur",
+			"to_port": 0
+		},
+		{
+			"from": "fast_blur",
+			"from_port": 0,
+			"to": "colorize_2",
+			"to_port": 0
+		},
+		{
+			"from": "translate_3",
+			"from_port": 0,
+			"to": "colorize",
+			"to_port": 0
+		},
+		{
+			"from": "combine",
+			"from_port": 0,
+			"to": "blend2",
+			"to_port": 1
+		},
+		{
+			"from": "fbm3",
+			"from_port": 0,
+			"to": "buffer",
+			"to_port": 0
+		},
+		{
+			"from": "buffer",
+			"from_port": 0,
+			"to": "translate_3",
+			"to_port": 0
+		}
+	],
+	"label": "Graph",
+	"longdesc": "",
+	"name": "_Node_856",
+	"node_position": {
+		"x": 0.0,
+		"y": 0.0
+	},
+	"nodes": [
+		{
+			"export_last_target": "Godot/Godot 4",
+			"export_paths": {
+				"Godot/Godot 4": "/home/apples/Repos/7dfps-jam-2025/materials/wind"
+			},
+			"name": "Material",
+			"node_position": {
+				"x": 91.837646484375,
+				"y": 2.42420148849487
+			},
+			"parameters": {
+				"albedo_color": {
+					"a": 1.0,
+					"b": 1.0,
+					"g": 1.0,
+					"r": 1.0,
+					"type": "Color"
+				},
+				"ao": 1.0,
+				"depth_scale": 0.5,
+				"emission_energy": 1.0,
+				"flags_transparent": true,
+				"metallic": 0.0,
+				"normal": 1.0,
+				"roughness": 1.0
+			},
+			"seed_int": 0,
+			"type": "material_dynamic"
+		},
+		{
+			"name": "splines",
+			"node_position": {
+				"x": -2092.66186523438,
+				"y": -105.83447265625
+			},
+			"parameters": {
+				"splines": {
+					"point_groups": [
+						[
+							3,
+							4
+						]
+					],
+					"type": "Splines",
+					"values": [
+						0.0612499825656414,
+						0.0600000023841858,
+						0.0362737327814102,
+						0.0,
+						0.188749954104424,
+						0.182500123977661,
+						0.147452533245087,
+						0.0,
+						0.364709287881851,
+						0.365151077508926,
+						0.147452533245087,
+						0.0,
+						0.499709278345108,
+						0.500151038169861,
+						0.147452533245087,
+						0.0,
+						0.499709278345108,
+						0.500151038169861,
+						0.147452533245087,
+						0.0,
+						0.637209057807922,
+						0.62765097618103,
+						0.147452533245087,
+						0.0,
+						0.757575571537018,
+						0.752499997615814,
+						0.147452533245087,
+						0.0,
+						0.933749973773956,
+						0.917500019073486,
+						0.0362737327814102,
+						0.0
+					]
+				}
+			},
+			"seed_int": 0,
+			"type": "splines"
+		},
+		{
+			"generic_size": 1,
+			"name": "shear",
+			"node_position": {
+				"x": -1925.77416992188,
+				"y": -103.440536499023
+			},
+			"parameters": {
+				"amount": -4.0,
+				"center": 0.0,
+				"direction": 0.0
+			},
+			"seed_int": 0,
+			"shader_model": {
+				"code": "",
+				"global": "",
+				"inputs": [
+					{
+						"default": "vec4(1.0)",
+						"label": "",
+						"longdesc": "The input image",
+						"name": "in#",
+						"shortdesc": "Input#",
+						"type": "rgba"
+					}
+				],
+				"instance": "",
+				"longdesc": "Performs a shear stress transform on its input",
+				"name": "Shear",
+				"outputs": [
+					{
+						"longdesc": "Shows the transformed image",
+						"rgba": "$in#(fract($uv+$amount*($uv.yx-vec2($center))*vec2($direction)))",
+						"shortdesc": "Output#",
+						"type": "rgba"
+					}
+				],
+				"parameters": [
+					{
+						"default": 1.0,
+						"label": "",
+						"longdesc": "The direction of the shear transform (horizontal or vertical)",
+						"name": "direction",
+						"shortdesc": "Direction",
+						"type": "enum",
+						"values": [
+							{
+								"name": "Horizontal",
+								"value": "1.0, 0.0"
+							},
+							{
+								"name": "Vertical",
+								"value": "0.0, 1.0"
+							}
+						]
+					},
+					{
+						"control": "None",
+						"default": 0.0,
+						"label": "",
+						"longdesc": "The amount of the transform",
+						"max": 1.0,
+						"min": -1.0,
+						"name": "amount",
+						"shortdesc": "Amount",
+						"step": 0.01,
+						"type": "float"
+					},
+					{
+						"control": "None",
+						"default": 0.0,
+						"label": "",
+						"longdesc": "The position of the shear center",
+						"max": 1.0,
+						"min": 0.0,
+						"name": "center",
+						"shortdesc": "Center",
+						"step": 0.01,
+						"type": "float"
+					}
+				],
+				"shortdesc": "Shear"
+			},
+			"type": "shader"
+		},
+		{
+			"name": "fbm3",
+			"node_position": {
+				"x": -2722.009765625,
+				"y": 160.920837402344
+			},
+			"parameters": {
+				"folds": 0.0,
+				"iterations": 3.0,
+				"noise": 1,
+				"offset": 0.0,
+				"persistence": 0.5,
+				"scale_x": 2.0,
+				"scale_y": 2.0
+			},
+			"seed_int": 0,
+			"type": "fbm3"
+		},
+		{
+			"name": "colorize",
+			"node_position": {
+				"x": -2023.46459960938,
+				"y": 205.642456054688
+			},
+			"parameters": {
+				"gradient": {
+					"interpolation": 1,
+					"points": [
+						{
+							"a": 0.0,
+							"b": 0.0,
+							"g": 0.0,
+							"pos": 0.499377185151777,
+							"r": 0.0
+						},
+						{
+							"a": 1.0,
+							"b": 1.0,
+							"g": 1.0,
+							"pos": 1.0,
+							"r": 1.0
+						}
+					],
+					"type": "Gradient"
+				}
+			},
+			"seed_int": 0,
+			"type": "colorize"
+		},
+		{
+			"name": "colorize_2",
+			"node_position": {
+				"x": -1421.40185546875,
+				"y": -98.3232421875
+			},
+			"parameters": {
+				"gradient": {
+					"interpolation": 1,
+					"points": [
+						{
+							"a": 0.0,
+							"b": 1.0,
+							"g": 1.0,
+							"pos": 0.0,
+							"r": 1.0
+						},
+						{
+							"a": 1.0,
+							"b": 1.0,
+							"g": 1.0,
+							"pos": 1.0,
+							"r": 1.0
+						}
+					],
+					"type": "Gradient"
+				}
+			},
+			"seed_int": 0,
+			"type": "colorize"
+		},
+		{
+			"generic_size": 1,
+			"name": "translate",
+			"node_position": {
+				"x": -1192.71179199219,
+				"y": -90.1172332763672
+			},
+			"parameters": {
+				"translate_x": "$time",
+				"translate_y": 0.0
+			},
+			"seed_int": 0,
+			"type": "translate"
+		},
+		{
+			"generic_size": 1,
+			"name": "blend2",
+			"node_position": {
+				"x": -757.916809082031,
+				"y": 66.8648452758789
+			},
+			"parameters": {
+				"amount1": 1.0,
+				"blend_type1": 4
+			},
+			"seed_int": 0,
+			"type": "blend2"
+		},
+		{
+			"name": "gradient",
+			"node_position": {
+				"x": -1923.46459960938,
+				"y": 415.794464111328
+			},
+			"parameters": {
+				"gradient": {
+					"interpolation": 1,
+					"points": [
+						{
+							"a": 0.0,
+							"b": 0.0,
+							"g": 0.0,
+							"pos": 0.0,
+							"r": 0.0
+						},
+						{
+							"a": 1.0,
+							"b": 1.0,
+							"g": 1.0,
+							"pos": 0.100964495243917,
+							"r": 1.0
+						},
+						{
+							"a": 1.0,
+							"b": 1.0,
+							"g": 1.0,
+							"pos": 0.896766021961474,
+							"r": 1.0
+						},
+						{
+							"a": 0.0,
+							"b": 0.0,
+							"g": 0.0,
+							"pos": 1.0,
+							"r": 0.0
+						}
+					],
+					"type": "Gradient"
+				},
+				"repeat": 1.0,
+				"rotate": 90.0
+			},
+			"seed_int": 0,
+			"type": "gradient"
+		},
+		{
+			"name": "decompose_2",
+			"node_position": {
+				"x": -1834.22546386719,
+				"y": 204.582778930664
+			},
+			"parameters": {
+
+			},
+			"seed_int": 0,
+			"type": "decompose"
+		},
+		{
+			"name": "combine",
+			"node_position": {
+				"x": -1340.76904296875,
+				"y": 209.962677001953
+			},
+			"parameters": {
+
+			},
+			"seed_int": 0,
+			"type": "combine"
+		},
+		{
+			"minimized": true,
+			"name": "decompose_3",
+			"node_position": {
+				"x": -1744.82446289062,
+				"y": 411.350433349609
+			},
+			"parameters": {
+
+			},
+			"seed_int": 0,
+			"type": "decompose"
+		},
+		{
+			"name": "math",
+			"node_position": {
+				"x": -1615.76147460938,
+				"y": 339.113494873047
+			},
+			"parameters": {
+				"clamp": false,
+				"default_in1": 0.0,
+				"default_in2": 0.0,
+				"op": 2
+			},
+			"seed_int": 0,
+			"type": "math"
+		},
+		{
+			"minimized": true,
+			"name": "decompose_4",
+			"node_position": {
+				"x": -222.590209960938,
+				"y": 52.8464546203613
+			},
+			"parameters": {
+
+			},
+			"seed_int": 0,
+			"type": "decompose"
+		},
+		{
+			"minimized": true,
+			"name": "combine_2",
+			"node_position": {
+				"x": -29.4900207519531,
+				"y": 15.6436786651611
+			},
+			"parameters": {
+
+			},
+			"seed_int": 0,
+			"type": "combine"
+		},
+		{
+			"generic_size": 1,
+			"name": "transform2",
+			"node_position": {
+				"x": -471.725769042969,
+				"y": 14.8892669677734
+			},
+			"parameters": {
+				"mode": 0.0,
+				"rotate": 90.0,
+				"scale_x": -1.0,
+				"scale_y": 1.0,
+				"translate_x": 0.0,
+				"translate_y": 0.0
+			},
+			"seed_int": 0,
+			"type": "transform2"
+		},
+		{
+			"name": "fast_blur",
+			"node_position": {
+				"x": -1679.96423339844,
+				"y": -121.203750610352
+			},
+			"parameters": {
+				"param0": 8,
+				"param1": 39.0,
+				"param2": 1.0,
+				"param3": 1.0
+			},
+			"seed_int": 0,
+			"type": "fast_blur"
+		},
+		{
+			"generic_size": 1,
+			"name": "translate_3",
+			"node_position": {
+				"x": -2250.9345703125,
+				"y": 205.040649414062
+			},
+			"parameters": {
+				"translate_x": "-$time",
+				"translate_y": "-$time"
+			},
+			"seed_int": 0,
+			"type": "translate"
+		},
+		{
+			"name": "buffer",
+			"node_position": {
+				"x": -2476.0361328125,
+				"y": 176.037384033203
+			},
+			"parameters": {
+				"f32": false,
+				"filter": true,
+				"mipmap": true,
+				"size": 8
+			},
+			"seed_int": 0,
+			"type": "buffer",
+			"version": 2
+		}
+	],
+	"parameters": {
+
+	},
+	"seed_int": 0,
+	"shortdesc": "",
+	"type": "graph"
+}

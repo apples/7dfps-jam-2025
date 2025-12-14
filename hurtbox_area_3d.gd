@@ -1,6 +1,8 @@
 extends Area3D
 class_name HurtboxArea3D
 
+signal hit_something()
+
 @export var target_group: StringName = &"player"
 
 ## If -1, treat as unlimited.
@@ -38,4 +40,5 @@ func _hurt_bodies() -> void:
 	var n = _hit_bodies.size()
 	for i in range(_last_hit, mini(n, max_hit)):
 		_hit_bodies[i].hurt()
+		hit_something.emit()
 	_last_hit = n

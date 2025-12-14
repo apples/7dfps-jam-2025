@@ -6,6 +6,9 @@
 extends CharacterBody3D
 
 
+signal footstep()
+
+
 #region Character Export Group
 
 ## The settings for the character's movement and feel.
@@ -483,5 +486,8 @@ func handle_pausing():
 			Input.MOUSE_MODE_VISIBLE:
 				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 				#get_tree().paused = false
+
+func on_footstep() -> void:
+	footstep.emit()
 
 #endregion
