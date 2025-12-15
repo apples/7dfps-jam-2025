@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://3egcqgrh2uc3"]
+[gd_scene load_steps=24 format=3 uid="uid://3egcqgrh2uc3"]
 
 [ext_resource type="PackedScene" uid="uid://c26x5xjhv4kpo" path="res://levels/level2.blend" id="1_jg0dc"]
 [ext_resource type="PackedScene" uid="uid://dn6psaqqe4p13" path="res://objects/fountain.tscn" id="2_nmjpi"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://7cc0ictoqxal" path="res://objects/multicast_receiver.tscn" id="11_yl73a"]
 [ext_resource type="FontFile" uid="uid://bmiu4bl4hnn1e" path="res://fonts/beholden/Beholden-Regular.ttf" id="13_xbcdb"]
 [ext_resource type="Script" uid="uid://mxbmin3qdn4y" path="res://objects/clock.gd" id="14_s77qv"]
+[ext_resource type="Script" uid="uid://c88yy2xm8jh0l" path="res://objects/lever_victory.gd" id="16_i558w"]
 [ext_resource type="AudioStream" uid="uid://dvb5ju47e31nf" path="res://sfx/furnace.wav" id="18_jcnlr"]
 [ext_resource type="PackedScene" uid="uid://b8j31e8ouvxe7" path="res://enemies/skeleton_burning_ball.tscn" id="19_5kfcu"]
 
@@ -1561,111 +1562,119 @@ max_distance = 13.0
 
 [node name="PowerSound" parent="." index="296" instance=ExtResource("9_78pok")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79, 2, -111)
-visible = false
 stream = ExtResource("10_lvfll")
 attenuation_model = 3
 max_db = -8.0
 max_distance = 15.0
 bus = &"SFX"
 
-[node name="Fan2" parent="." index="297" instance=ExtResource("5_n7ypv")]
-transform = Transform3D(-4.3378083e-08, -0.08715575, 0.9961947, -3.8096983e-09, 0.9961947, 0.08715575, -1, -1.4551915e-11, -4.3545054e-08, -73.82569, -2.2923894, -73.299995)
+[node name="CornerFanExitThing" type="Node3D" parent="." index="297"]
+transform = Transform3D(-4.3378083e-08, -0.08715575, 0.9961947, -3.8096983e-09, 0.9961947, 0.08715575, -1, -1.4551915e-11, -4.3545054e-08, -73.82569, -2.2923894, -70.299995)
+
+[node name="Fan2" parent="CornerFanExitThing" index="0" instance=ExtResource("5_n7ypv")]
+transform = Transform3D(1, 0, 0, 0, 1, 6.3366393e-19, 0, 6.3366393e-19, 1, 0, 0, 0)
 wind_speed = 60.0
 length = 120.0
 active_when_powered = true
 
-[node name="lever2" parent="." index="298" node_paths=PackedStringArray("target") instance=ExtResource("4_n7ypv")]
-transform = Transform3D(-1, 0, -8.7422784e-08, 0, 1.0000002, 0, 8.742278e-08, 0, -1.0000001, -74.05244, 0.2975099, -72.299995)
+[node name="lever2" parent="CornerFanExitThing" index="1" node_paths=PackedStringArray("target") instance=ExtResource("4_n7ypv")]
+transform = Transform3D(-4.4044693e-08, -3.8096992e-09, 1.0000001, 0.08715575, 0.99619496, 7.63395e-09, -0.9961947, 0.087155774, -4.3545057e-08, -1, 2.5998058, -0.00015258789)
 target = NodePath("../Fan2")
 save_state = true
 
-[node name="Skeleton" parent="." index="299" instance=ExtResource("7_7dov7")]
+[node name="ExitFanMover" type="Node" parent="CornerFanExitThing" index="2"]
+script = ExtResource("2_yl73a")
+distance = Vector3(0, 0, -3)
+speed = 10.0
+metadata/_custom_type_script = "uid://dh2lxbnb8g4lk"
+
+[node name="Skeleton" parent="." index="298" instance=ExtResource("7_7dov7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -51)
 
-[node name="Skeleton2" parent="." index="300" instance=ExtResource("7_7dov7")]
+[node name="Skeleton2" parent="." index="299" instance=ExtResource("7_7dov7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -70)
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." index="301"]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." index="300"]
 navigation_mesh = ExtResource("8_ehv2h")
 
-[node name="SkeletonRanger" parent="." index="302" instance=ExtResource("9_ehv2h")]
+[node name="SkeletonRanger" parent="." index="301" instance=ExtResource("9_ehv2h")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -51, 0, -79)
 
-[node name="SkeletonRanger3" parent="." index="303" instance=ExtResource("9_ehv2h")]
+[node name="SkeletonRanger3" parent="." index="302" instance=ExtResource("9_ehv2h")]
 transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, -39.7, 0, -109.5)
 
-[node name="Skeleton6" parent="." index="304" instance=ExtResource("7_7dov7")]
+[node name="Skeleton6" parent="." index="303" instance=ExtResource("7_7dov7")]
 transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, -53, 0, -103)
 
-[node name="Skeleton7" parent="." index="305" instance=ExtResource("7_7dov7")]
+[node name="Skeleton7" parent="." index="304" instance=ExtResource("7_7dov7")]
 transform = Transform3D(-0.49999997, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.49999997, -56, 0, -106)
 
-[node name="SkeletonRanger2" parent="." index="306" instance=ExtResource("9_ehv2h")]
+[node name="SkeletonRanger2" parent="." index="305" instance=ExtResource("9_ehv2h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -114)
 
-[node name="Skeleton3" parent="." index="307" instance=ExtResource("7_7dov7")]
+[node name="Skeleton3" parent="." index="306" instance=ExtResource("7_7dov7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -112)
 
-[node name="Skeleton4" parent="." index="308" instance=ExtResource("7_7dov7")]
+[node name="Skeleton4" parent="." index="307" instance=ExtResource("7_7dov7")]
 transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -31, 0, -112)
 
-[node name="Skeleton5" parent="." index="309" instance=ExtResource("7_7dov7")]
+[node name="Skeleton5" parent="." index="308" instance=ExtResource("7_7dov7")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -32, 0, -92)
 
-[node name="Fan3" parent="." index="310" instance=ExtResource("5_n7ypv")]
+[node name="Fan3" parent="." index="309" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -6, -1, -61.5)
 wind_speed = 20.0
 attenuation = 1.0
 
-[node name="Fan4" parent="." index="311" instance=ExtResource("5_n7ypv")]
+[node name="Fan4" parent="." index="310" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5, -1, -61.5)
 wind_speed = 20.0
 attenuation = 1.0
 
-[node name="SkeletonRanger4" parent="." index="312" instance=ExtResource("9_ehv2h")]
+[node name="SkeletonRanger4" parent="." index="311" instance=ExtResource("9_ehv2h")]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 17, 2, -83)
 
-[node name="Skeleton8" parent="." index="313" instance=ExtResource("7_7dov7")]
+[node name="Skeleton8" parent="." index="312" instance=ExtResource("7_7dov7")]
 transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 9, 0, -87)
 
-[node name="Skeleton9" parent="." index="314" instance=ExtResource("7_7dov7")]
+[node name="Skeleton9" parent="." index="313" instance=ExtResource("7_7dov7")]
 transform = Transform3D(-0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, -0.7071067, 23.142136, 0, -73)
 
-[node name="Skeleton10" parent="." index="315" instance=ExtResource("7_7dov7")]
+[node name="Skeleton10" parent="." index="314" instance=ExtResource("7_7dov7")]
 transform = Transform3D(-0.25881907, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, -0.25881907, 39, 0, -74)
 
-[node name="Skeleton12" parent="." index="316" instance=ExtResource("7_7dov7")]
+[node name="Skeleton12" parent="." index="315" instance=ExtResource("7_7dov7")]
 transform = Transform3D(0.7071068, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.7071068, 39.46687, 0, -86.90923)
 
-[node name="SkeletonRanger5" parent="." index="317" instance=ExtResource("9_ehv2h")]
+[node name="SkeletonRanger5" parent="." index="316" instance=ExtResource("9_ehv2h")]
 transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, 50, 3, -87)
 
-[node name="SkeletonRanger6" parent="." index="318" instance=ExtResource("9_ehv2h")]
+[node name="SkeletonRanger6" parent="." index="317" instance=ExtResource("9_ehv2h")]
 transform = Transform3D(-0.5000001, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, -0.5000001, 50, 3, -73)
 
-[node name="Skeleton11" parent="." index="319" instance=ExtResource("7_7dov7")]
+[node name="Skeleton11" parent="." index="318" instance=ExtResource("7_7dov7")]
 transform = Transform3D(-0.9659257, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, -0.9659257, 45, 0, -76)
 
-[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="324"]
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="323"]
 visible = false
 occluder = ExtResource("11_eoq84")
 
-[node name="Fan5" parent="." index="330" instance=ExtResource("5_n7ypv")]
+[node name="Fan5" parent="." index="329" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 50, 0, -85)
 length = 24.0
 active_when_powered = true
 
-[node name="Fan6" parent="." index="331" instance=ExtResource("5_n7ypv")]
+[node name="Fan6" parent="." index="330" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -90)
 length = 14.0
 active_when_powered = true
 
-[node name="Fan7" parent="." index="332" instance=ExtResource("5_n7ypv")]
+[node name="Fan7" parent="." index="331" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 40, 0, -75)
 length = 30.0
 active_when_powered = true
 
-[node name="lever3" parent="." index="333" node_paths=PackedStringArray("target") instance=ExtResource("4_n7ypv")]
+[node name="lever3" parent="." index="332" node_paths=PackedStringArray("target") instance=ExtResource("4_n7ypv")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 55.8, 4, -80)
 target = NodePath("MulticastReceiver")
 save_state = true
@@ -1675,43 +1684,43 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.3
 skeleton = NodePath("../..")
 targets = [NodePath("../../Fan5"), NodePath("../../Fan6"), NodePath("../../Fan7"), NodePath("../../Gate5")]
 
-[node name="lever4" parent="." index="334" node_paths=PackedStringArray("target") instance=ExtResource("4_n7ypv")]
+[node name="lever4" parent="." index="333" node_paths=PackedStringArray("target") instance=ExtResource("4_n7ypv")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -79.8, 1, -117)
 target = NodePath("MulticastReceiver")
 save_state = true
 
 [node name="MulticastReceiver" parent="lever4" index="6" node_paths=PackedStringArray("targets") instance=ExtResource("11_yl73a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
-targets = [NodePath("../../Plane_005/Mover"), NodePath("../../Gate8"), NodePath("../../PowerSound")]
+targets = [NodePath("../../Plane_005/Mover"), NodePath("../../Gate8"), NodePath("../../PowerSound"), NodePath("../../CornerFanExitThing/ExitFanMover")]
 
 [node name="_FogVolume_28693" type="FogVolume" parent="Lava_005" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.75, 0)
 size = Vector3(55, 4.5, 31)
 material = SubResource("FogMaterial_s77qv")
 
-[node name="Fan8" parent="." index="362" instance=ExtResource("5_n7ypv")]
+[node name="Fan8" parent="." index="361" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, -111)
 length = 30.0
 active_when_powered = true
 
-[node name="lever" parent="." index="363" node_paths=PackedStringArray("target") instance=ExtResource("4_n7ypv")]
+[node name="lever" parent="." index="362" node_paths=PackedStringArray("target") instance=ExtResource("4_n7ypv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -114.3)
 target = NodePath("../Fan8")
 
-[node name="Gate8" parent="." index="364" instance=ExtResource("3_1y8me")]
+[node name="Gate8" parent="." index="363" instance=ExtResource("3_1y8me")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -96)
 
-[node name="lever5" parent="." index="365" instance=ExtResource("4_n7ypv")]
+[node name="VictoryLever" parent="." index="364" instance=ExtResource("4_n7ypv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, -167.8)
+script = ExtResource("16_i558w")
 
-[node name="Label3D" type="Label3D" parent="lever5" index="6"]
+[node name="Label3D" type="Label3D" parent="VictoryLever" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0.5)
 pixel_size = 0.01
-text = "If you flip this lever,
-you win!"
+text = "Self-destruct"
 font = ExtResource("13_xbcdb")
 
-[node name="Fan9" parent="." index="366" instance=ExtResource("5_n7ypv")]
+[node name="Fan9" parent="." index="365" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23.7, 29, -140.3)
 length = 12.0
 active_when_powered = true
@@ -1722,7 +1731,7 @@ target = NodePath("..")
 time_off = 1.5
 metadata/_custom_type_script = "uid://mxbmin3qdn4y"
 
-[node name="Fan11" parent="." index="367" instance=ExtResource("5_n7ypv")]
+[node name="Fan11" parent="." index="366" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 23.699999, 29, -144)
 length = 12.0
 active_when_powered = true
@@ -1733,7 +1742,7 @@ target = NodePath("..")
 time_off = 1.5
 metadata/_custom_type_script = "uid://mxbmin3qdn4y"
 
-[node name="Fan10" parent="." index="368" instance=ExtResource("5_n7ypv")]
+[node name="Fan10" parent="." index="367" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23.7, 29, -147)
 length = 12.0
 active_when_powered = true
@@ -1745,73 +1754,73 @@ time_off = 1.5
 start_time = 1.25
 metadata/_custom_type_script = "uid://mxbmin3qdn4y"
 
-[node name="SkeletonRanger7" parent="." index="369" instance=ExtResource("9_ehv2h")]
+[node name="SkeletonRanger7" parent="." index="368" instance=ExtResource("9_ehv2h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 29, -153)
 
-[node name="SkeletonRanger8" parent="." index="370" instance=ExtResource("9_ehv2h")]
+[node name="SkeletonRanger8" parent="." index="369" instance=ExtResource("9_ehv2h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 29, -153)
 
-[node name="Skeleton13" parent="." index="371" instance=ExtResource("7_7dov7")]
+[node name="Skeleton13" parent="." index="370" instance=ExtResource("7_7dov7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 29, -137)
 
-[node name="Skeleton14" parent="." index="372" instance=ExtResource("7_7dov7")]
+[node name="Skeleton14" parent="." index="371" instance=ExtResource("7_7dov7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 29, -136)
 
-[node name="Skeleton15" parent="." index="373" instance=ExtResource("7_7dov7")]
+[node name="Skeleton15" parent="." index="372" instance=ExtResource("7_7dov7")]
 transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, -8.133975, 29, -122.5)
 
-[node name="SkeletonRanger9" parent="." index="374" instance=ExtResource("9_ehv2h")]
+[node name="SkeletonRanger9" parent="." index="373" instance=ExtResource("9_ehv2h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 29, -167)
 
-[node name="Skeleton16" parent="." index="375" instance=ExtResource("7_7dov7")]
+[node name="Skeleton16" parent="." index="374" instance=ExtResource("7_7dov7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 29, -161)
 
-[node name="Skeleton17" parent="." index="376" instance=ExtResource("7_7dov7")]
+[node name="Skeleton17" parent="." index="375" instance=ExtResource("7_7dov7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 29, -160)
 
-[node name="Skeleton18" parent="." index="377" instance=ExtResource("7_7dov7")]
+[node name="Skeleton18" parent="." index="376" instance=ExtResource("7_7dov7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 29, -134)
 
-[node name="Skeleton19" parent="." index="378" instance=ExtResource("7_7dov7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 29, -134)
+[node name="Skeleton19" parent="." index="377" instance=ExtResource("7_7dov7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 30.84, -134)
 
-[node name="Fan12" parent="." index="382" instance=ExtResource("5_n7ypv")]
+[node name="Fan12" parent="." index="381" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -28.700003, -1.0999993, -98.7)
 wind_speed = 20.0
 length = 3.0
 attenuation = 0.2
 
-[node name="Fan17" parent="." index="383" instance=ExtResource("5_n7ypv")]
+[node name="Fan17" parent="." index="382" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -38.100002, -1.0999999, -112.6)
 wind_speed = 20.0
 length = 3.0
 attenuation = 0.2
 
-[node name="Fan14" parent="." index="384" instance=ExtResource("5_n7ypv")]
+[node name="Fan14" parent="." index="383" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -57.800003, -1.0999998, -109.5)
 wind_speed = 20.0
 length = 3.0
 attenuation = 0.2
 
-[node name="Fan15" parent="." index="385" instance=ExtResource("5_n7ypv")]
+[node name="Fan15" parent="." index="384" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -60.600002, -1.0999999, -111.5)
 wind_speed = 20.0
 length = 3.0
 attenuation = 0.2
 
-[node name="Fan16" parent="." index="386" instance=ExtResource("5_n7ypv")]
+[node name="Fan16" parent="." index="385" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -64.3, -1.0999999, -110.4)
 wind_speed = 20.0
 length = 3.0
 attenuation = 0.2
 
-[node name="Fan13" parent="." index="387" instance=ExtResource("5_n7ypv")]
+[node name="Fan13" parent="." index="386" instance=ExtResource("5_n7ypv")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -43.9, -1.0999998, -109.299995)
 wind_speed = 20.0
 length = 3.0
 attenuation = 0.2
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="388"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="387"]
 transform = Transform3D(-0.99999994, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -0.99999994, -12, 1, -124)
 stream = ExtResource("18_jcnlr")
 volume_db = -7.55
@@ -1819,7 +1828,7 @@ pitch_scale = 0.05
 autoplay = true
 max_distance = 20.0
 
-[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="." index="389"]
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="." index="388"]
 transform = Transform3D(-0.99999994, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -0.99999994, 36, 1, -94.00001)
 stream = ExtResource("18_jcnlr")
 volume_db = -7.55
@@ -1827,7 +1836,7 @@ pitch_scale = 0.05
 autoplay = true
 max_distance = 20.0
 
-[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="." index="390"]
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="." index="389"]
 transform = Transform3D(-0.99999994, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -0.99999994, 15.000006, 1, -52.00001)
 stream = ExtResource("18_jcnlr")
 volume_db = -7.55
@@ -1835,18 +1844,18 @@ pitch_scale = 0.05
 autoplay = true
 max_distance = 20.0
 
-[node name="FogVolume2" type="FogVolume" parent="." index="391"]
+[node name="FogVolume2" type="FogVolume" parent="." index="390"]
 
-[node name="SkeletonBurningBall" parent="." index="392" instance=ExtResource("19_5kfcu")]
+[node name="SkeletonBurningBall" parent="." index="391" instance=ExtResource("19_5kfcu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, -4, -92)
 speed = 1.5
 
-[node name="SkeletonBurningBall2" parent="." index="393" instance=ExtResource("19_5kfcu")]
+[node name="SkeletonBurningBall2" parent="." index="392" instance=ExtResource("19_5kfcu")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -43, -4, -92)
 speed = 1.5
 skip_time = 0.5
 
-[node name="SkeletonBurningBall3" parent="." index="394" instance=ExtResource("19_5kfcu")]
+[node name="SkeletonBurningBall3" parent="." index="393" instance=ExtResource("19_5kfcu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, -4, -92)
 speed = 1.5
 skip_time = 1.0

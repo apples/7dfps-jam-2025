@@ -1,19 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://7sepke55ouvv"]
+[gd_scene load_steps=3 format=3 uid="uid://cuxodgymqwjpq"]
 
-[ext_resource type="Script" uid="uid://c6dmfpw0hx83r" path="res://menus/tutorial.gd" id="1_seqw1"]
-[ext_resource type="Script" uid="uid://b3sqs712lpooa" path="res://menus/selectable_control.gd" id="2_b8guh"]
+[ext_resource type="Script" uid="uid://ck6cmarsmvq38" path="res://menus/win_screen.gd" id="1_6yx0g"]
+[ext_resource type="Script" uid="uid://b3sqs712lpooa" path="res://menus/selectable_control.gd" id="2_jjwsr"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_seqw1"]
-font_size = 48
-
-[node name="Tutorial" type="Control"]
+[node name="WinScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_seqw1")
+script = ExtResource("1_6yx0g")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -40,33 +37,22 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="Buttons"]
 layout_mode = 2
-text = "You have been sent to investigate
-the burning fortress which has appeared
-outside of town.
-"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="Buttons"]
-layout_mode = 2
-text = "WASD - Move
-Shift - Sprint
-E/F - Interact
-Click - Attack
-F11 - Fullscreen
+text = "With the self-destruct lever pulled,
+the burning castle crumbles to the ground,
+and you may finally rest.
 
 "
-label_settings = SubResource("LabelSettings_seqw1")
 horizontal_alignment = 1
 
 [node name="Resume" type="MarginContainer" parent="Buttons"]
 layout_mode = 2
 mouse_filter = 0
-script = ExtResource("2_b8guh")
+script = ExtResource("2_jjwsr")
 metadata/_custom_type_script = "uid://b3sqs712lpooa"
 
 [node name="Label" type="Label" parent="Buttons/Resume"]
 layout_mode = 2
-text = "Start Quest"
+text = "Restart"
 horizontal_alignment = 1
 
 [connection signal="clicked" from="Buttons/Resume" to="." method="_on_resume_clicked"]

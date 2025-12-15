@@ -4,6 +4,7 @@ signal respawn_request()
 
 const PAUSE_MENU = preload("uid://deabhxcs4fsqn")
 const OOF = preload("uid://cau7886fgih4k")
+const RUN_HINT_CD = 15.0
 
 const FOOTSTEPS = [
 	preload("uid://gvaxs1s02pma"),
@@ -23,11 +24,13 @@ var weapon_node: Node3D
 var input_disabled: bool = false
 var invulnerable: bool = false
 
+var run_hint_cooldown: float = 0.0
+
 @onready var player_ui_animation_player: AnimationPlayer = $PlayerUI/PlayerUIAnimationPlayer
 @onready var weapon_animations: AnimationPlayer = $WeaponAnimations
 @onready var interact_ray_cast: RayCast3D = %InteractRayCast
 @onready var weapon_marker: Marker3D = %WeaponMarker
-@onready var footstep_audio_stream_player: AudioStreamPlayer = $FootstepAudioStreamPlayer
+@onready var run_hint_label: Label = %RunHintLabel
 
 func _enter_tree() -> void:
 	Globals.player = self
@@ -36,6 +39,7 @@ func _enter_tree() -> void:
 func _ready():
 	super._ready()
 	equip_weapon(preload("res://weapons/sword_archetype.tres"))
+	run_hint_label.modulate.a = 0.0
 
 func _process(delta: float) -> void:
 	super._process(delta)
@@ -56,6 +60,8 @@ func _process(delta: float) -> void:
 				stamina_change = -stamina_recovery_buffer
 				stamina_recovery_buffer = 0
 		status.current_stamina = clampi(status.current_stamina + stamina_change, 0, status.max_stamina)
+	
+	run_hint_cooldown -= delta
 
 func _unhandled_input(event: InputEvent) -> void:
 	if input_disabled:
@@ -73,6 +79,12 @@ func _unhandled_input(event: InputEvent) -> void:
 				weapon_animations.speed_scale *= 0.5
 				stamina_recovery_buffer *= 2
 			weapon_animations.play(status.equipped_weapon.attack_anim)
+		elif status.current_stamina <= 0 and run_hint_cooldown <= 0 and event.is_action_pressed("attack"):
+			run_hint_cooldown = RUN_HINT_CD
+			var t := create_tween()
+			t.tween_property(run_hint_label, "modulate:a", 1.0, 1.0)
+			t.tween_interval(1.0)
+			t.tween_property(run_hint_label, "modulate:a", 0.0, 1.0)
 	
 	if event.is_action_pressed("interact"):
 		if interact_ray_cast.is_colliding():

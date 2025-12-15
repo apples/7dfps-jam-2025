@@ -3,7 +3,7 @@ extends Area3D
 @export var target: Node:
 	set(v):
 		target = v
-		_power_receiver = target if target is PowerReceiver else target.find_children("*", "PowerReceiver", false, false).get(0)
+		_power_receiver = null if not target else target if target is PowerReceiver else target.find_children("*", "PowerReceiver", false, false).get(0)
 
 @export var active: bool = false:
 	set(v):
