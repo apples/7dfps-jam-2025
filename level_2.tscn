@@ -9,12 +9,12 @@
 [ext_resource type="Script" uid="uid://b7eouutdv5nh7" path="res://objects/spinner.gd" id="6_0s5r2"]
 [ext_resource type="PackedScene" uid="uid://8826iadsphwf" path="res://enemies/skeleton.tscn" id="7_7dov7"]
 [ext_resource type="AudioStream" uid="uid://bd2oficj0p48d" path="res://sfx/hairdryer.wav" id="8_5hnhx"]
-[ext_resource type="NavigationMesh" uid="uid://bjqvkr74ylmga" path="res://levels/level_2_navmesh.tres" id="8_ehv2h"]
 [ext_resource type="PackedScene" uid="uid://dlr17olwlxnjp" path="res://objects/power_sound.tscn" id="9_78pok"]
 [ext_resource type="PackedScene" uid="uid://dou3qwsi8otl0" path="res://enemies/skeleton_ranger.tscn" id="9_ehv2h"]
 [ext_resource type="AudioStream" uid="uid://cjqx48wgmrv6i" path="res://sfx/machine.wav" id="10_lvfll"]
 [ext_resource type="ArrayOccluder3D" uid="uid://b2lxnwt5pg7dd" path="res://levels/level_2.occ" id="11_eoq84"]
 [ext_resource type="PackedScene" uid="uid://7cc0ictoqxal" path="res://objects/multicast_receiver.tscn" id="11_yl73a"]
+[ext_resource type="NavigationMesh" uid="uid://bjqvkr74ylmga" path="res://levels/level_2_navmesh.tres" id="12_i558w"]
 [ext_resource type="FontFile" uid="uid://bmiu4bl4hnn1e" path="res://fonts/beholden/Beholden-Regular.ttf" id="13_xbcdb"]
 [ext_resource type="Script" uid="uid://mxbmin3qdn4y" path="res://objects/clock.gd" id="14_s77qv"]
 [ext_resource type="Script" uid="uid://c88yy2xm8jh0l" path="res://objects/lever_victory.gd" id="16_i558w"]
@@ -1595,7 +1595,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -51)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -70)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." index="300"]
-navigation_mesh = ExtResource("8_ehv2h")
+navigation_mesh = ExtResource("12_i558w")
 
 [node name="SkeletonRanger" parent="." index="301" instance=ExtResource("9_ehv2h")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -51, 0, -79)
